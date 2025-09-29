@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/model/hadeth_dm.dart';
 
 import '../../core/style/colors.dart';
 import '../tabs/hadeth_tab/hadeth_tab.dart';
