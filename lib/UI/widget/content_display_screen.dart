@@ -38,8 +38,13 @@ class ContentDisplayScreen extends StatelessWidget {
               ],
             ),
             content == null?
-            CircularProgressIndicator(
-              color: AppColors.gold,
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(
+                  color: AppColors.gold,
+                ),
+              ),
             ) :
             Expanded(
               child: SingleChildScrollView(

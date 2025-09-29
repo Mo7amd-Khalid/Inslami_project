@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islami_app/UI/tabs/hadeth_tab/hadeth_display_screen.dart';
 import 'package:islami_app/core/style/colors.dart';
 import 'package:islami_app/core/style/text_style.dart';
@@ -16,8 +17,10 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
 
   @override
   void initState() {
+    HadethDM.hadethCollectData().then((e){
+      setState(() {});
+    });
     super.initState();
-    HadethDM.hadethCollectData();
   }
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical:16.0),
                     child: CarouselSlider(
-                        items: HadethDM.hadeths.map((hadeth) => InkWell(
+                        items: HadethDM.hadeths!.map((hadeth) => InkWell(
                           onTap: (){
                             Navigator.pushNamed(context, HadethDisplayScreen.routeName, arguments: hadeth);
                           },
@@ -123,4 +126,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
       )
     );
   }
+
+
+
 }
