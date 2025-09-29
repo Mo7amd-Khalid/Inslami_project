@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/tabs/quran_tab/quran_details_screen.dart';
-import 'package:islami_app/tabs/quran_tab/sura_card.dart';
+import 'package:islami_app/UI/tabs/quran_tab/quran_details_screen.dart';
+import 'package:islami_app/UI/tabs/quran_tab/sura_card.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../core/style/colors.dart';
-import '../../core/style/text_style.dart';
-import '../../model/suraDM.dart';
+
+import '../../../core/style/colors.dart';
+import '../../../core/style/text_style.dart';
+import '../../../model/suraDM.dart';
 import 'most_recent_card.dart';
 
 class QuranTabScreen extends StatefulWidget {

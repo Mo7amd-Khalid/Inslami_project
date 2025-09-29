@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../core/style/colors.dart';
-import '../tabs/hadeth_tab.dart';
+import '../../core/style/colors.dart';
+import '../tabs/hadeth_tab/hadeth_tab.dart';
 import '../tabs/quran_tab/quran_tab.dart';
 import '../tabs/radio_tab.dart';
 import '../tabs/sebha_tab.dart';

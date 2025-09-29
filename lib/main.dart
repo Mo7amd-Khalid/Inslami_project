@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/tabs/quran_tab/quran_details_screen.dart';
 
-import 'home/home_screen.dart';
+import 'UI/home/home_screen.dart';
+import 'UI/tabs/hadeth_tab/hadeth_display_screen.dart';
+import 'UI/tabs/quran_tab/quran_details_screen.dart';
+
 
 
 void main() {
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName : (_) => HomeScreen(),
         QuranDetailsScreen.routeName : (_) => QuranDetailsScreen(),
+        HadethDisplayScreen.routeName : (_) => HadethDisplayScreen()
       },
       initialRoute: HomeScreen.routeName,
     );

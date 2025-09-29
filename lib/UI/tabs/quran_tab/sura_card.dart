@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../core/style/colors.dart';
-import '../../core/style/text_style.dart';
-import '../../model/suraDM.dart';
+import '../../../core/style/colors.dart';
+import '../../../core/style/text_style.dart';
+import '../../../model/suraDM.dart';
+
 
 class SuraCard extends StatelessWidget{
   final SuraDM sura;
