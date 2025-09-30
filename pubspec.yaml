@@ -38,6 +38,7 @@ dependencies:
   shared_preferences: ^2.5.3
   carousel_slider: ^5.1.1
   smooth_page_indicator: ^1.2.1
+  animated_rotation: ^2.0.0
 
 flutter_native_splash:
   color: "#202020"

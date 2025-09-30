@@ -22,6 +22,8 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
   List<SuraDM> mostRecent = [];
   List<SuraDM>? searchItems;
 
+  var searchController = TextEditingController();
+
   bool searchItemExist = false;
   @override
   void initState() {
@@ -61,10 +63,12 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
                     alignment: Alignment.center,
                     child: Image.asset(
                         "assets/images/img_header.png",
+                      color: AppColors.gold,
                       width: MediaQuery.of(context).size.width*0.6,
                     ),
                   ),
                   TextFormField(
+                    controller: searchController,
                     onChanged: (input)
                     {
                       _searchedFunc(input);
@@ -78,6 +82,17 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
                         AssetImage("assets/icons/quran.png"),
                         color: AppColors.gold,
                       ),
+                      suffixIcon: searchItems == null ?
+                      null :
+                      IconButton(
+                          onPressed: (){
+                            searchController.clear();
+                            searchItems = null;
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            Icons.cancel,
+                            color: AppColors.gold,)),
                       hintText: "Sura Name",
                       hintStyle: TextStyle(
                         color: AppColors.white
