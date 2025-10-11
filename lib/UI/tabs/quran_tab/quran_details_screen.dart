@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../core/style/colors.dart';
-import '../../../core/style/text_style.dart';
-import '../../../model/suraDM.dart';
+
+import '../../../model/sura-dm.dart';
 import '../../widget/content_display_screen.dart';
 
 
 
 
 class QuranDetailsScreen extends StatefulWidget {
-  QuranDetailsScreen({super.key});
+  const QuranDetailsScreen({super.key});
   static const String routeName = "Quran Details Screen";
 
   @override

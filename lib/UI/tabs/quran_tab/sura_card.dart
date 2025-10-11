@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../core/style/colors.dart';
 import '../../../core/style/text_style.dart';
-import '../../../model/suraDM.dart';
+import '../../../model/sura-dm.dart';
 
 
 class SuraCard extends StatelessWidget{
   final SuraDM sura;
   final Function(int) onClick;
-  SuraCard({required this.sura, required this.onClick});
+  const SuraCard({required this.sura, required this.onClick});
 
   @override
   Widget build(BuildContext context) {

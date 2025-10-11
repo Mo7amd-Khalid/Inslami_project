@@ -4,7 +4,7 @@ import 'package:islami_app/model/hadeth_dm.dart';
 import '../../widget/content_display_screen.dart';
 
 class HadethDisplayScreen extends StatelessWidget {
-  HadethDisplayScreen({super.key});
+  const HadethDisplayScreen({super.key});
   static const String routeName = "Hadeth Display Screen";
 
 
