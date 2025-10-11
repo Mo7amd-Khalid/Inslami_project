@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:islami_app/UI/tabs/hadeth_tab/hadeth_display_screen.dart';
 import 'package:islami_app/core/style/colors.dart';
 import 'package:islami_app/core/style/text_style.dart';
@@ -44,19 +43,19 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
             )
         ),
         child: SafeArea(
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Image.asset(
-                  "assets/images/img_header.png",
-                  color: AppColors.gold,
-                  width: MediaQuery.of(context).size.width*0.6,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    "assets/images/img_header.png",
+                    color: AppColors.gold,
+                    width: MediaQuery.of(context).size.width*0.6,
+                  ),
                 ),
-              ),
-              Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical:16.0),
+                Expanded(
                     child: CarouselSlider(
                         items: HadethDM.hadeths!.map((hadeth) => InkWell(
                           onTap: (){
@@ -91,13 +90,15 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                 ),
                                 Expanded(child: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                  child: Text(
-                                      hadeth.content,
-                                    textAlign: TextAlign.center,
-                                    style: AppTextStyle.largeBody(color: AppColors.black).copyWith(
-                                      height: 2,
+                                  child: SingleChildScrollView(
+                                    child: Text(
+                                        hadeth.content,
+                                      textAlign: TextAlign.center,
+                                      style: AppTextStyle.largeBody(color: AppColors.black).copyWith(
+                                        height: 2,
+                                      ),
+                                    
                                     ),
-                          
                                   ),
                                 )),
                                 Image.asset(
@@ -106,21 +107,21 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                   width: double.infinity,)
                               ],
                             ),
-                          
+
                           ),
                         )).toList(),
                         options: CarouselOptions(
-                            height: double.infinity, 
-                            enableInfiniteScroll: true, 
-                            viewportFraction: 0.83, 
-                            animateToClosest: true, 
-                            enlargeCenterPage: true, 
+                            height: double.infinity,
+                            enableInfiniteScroll: true,
+                            viewportFraction: 0.83,
+                            animateToClosest: true,
+                            enlargeCenterPage: true,
                             initialPage: 0
-                        )),
-                  )
-              ),
+                        ))
+                ),
 
-            ],
+              ],
+            ),
           ),
         ),
       )

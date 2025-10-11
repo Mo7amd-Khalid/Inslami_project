@@ -1,0 +1,166 @@
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
+import 'package:islami_app/model/sura-dm.dart';
+
+import '../../../core/style/colors.dart';
+import '../../../core/style/text_style.dart';
+
+class ReciterScreen extends StatefulWidget {
+  const ReciterScreen({super.key});
+  static const String routeName = "Reciter Screen";
+
+  @override
+  State<ReciterScreen> createState() => _ReciterScreenState();
+}
+
+class _ReciterScreenState extends State<ReciterScreen> {
+
+  final player = AudioPlayer();
+
+
+  String? idSoundPlayed;
+  String? idSoundMuted;
+
+  @override
+  Widget build(BuildContext context) {
+    var item = ModalRoute.of(context)!.settings.arguments as dynamic;
+    List<String>? surasURL = List.generate(item["moshaf"][0]["surah_total"], (index){
+      final surahNumber = (index + 1).toString().padLeft(3, '0');
+      return "${item["moshaf"][0]["server"]}$surahNumber.mp3";
+    });
+
+    return Scaffold(
+      backgroundColor: AppColors.black,
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        toolbarHeight: 40,
+        backgroundColor: AppColors.black,
+        foregroundColor: AppColors.gold,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Image.asset("assets/images/img_left_corner.png"),
+                Expanded(child:
+                Text(
+                  item["name"],
+                  style: AppTextStyle.mediumTitle(),
+                  textAlign: TextAlign.center,
+                )),
+                Image.asset("assets/images/img_right_corner.png"),
+              ],
+            ),
+            Expanded(child: 
+            ListView.separated(
+                itemBuilder: (_,index)=>reciterListItem(SuraDM.suras[
+                  int.parse(item["moshaf"][0]["surah_list"].split(",")[index]) - 1
+                ].nameEN, index, surasURL[index]),
+                separatorBuilder: (_,index)=>SizedBox(height: 16,),
+                itemCount: item["moshaf"][0]["surah_total"])),
+            Image.asset(
+              "assets/images/Mosque-02.png",
+              color: AppColors.gold,)
+          ],
+        ),
+      ),
+    );
+
+
+  }
+
+  Widget reciterListItem(String title, int id, String url){
+    return Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height*0.15,
+      decoration: BoxDecoration(
+          color: AppColors.gold,
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+            image: idSoundPlayed == "reciter$id" ?AssetImage("assets/images/sound-wave.png") : AssetImage("assets/images/Mosque-02.png"),
+            alignment: Alignment.bottomCenter,
+            opacity: 0.5,
+          )
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: AppTextStyle.smallLabel(color: AppColors.black),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 20,
+            children: [
+              InkWell(
+                onTap: (){
+                  playOrPause(url, id, "reciter");
+                },
+                child: ImageIcon(
+                  idSoundPlayed == "reciter$id"? AssetImage("assets/icons/Pause.png") : AssetImage("assets/icons/play.png"),
+                  size: 32,
+                ),
+              ),
+              InkWell(
+                onTap: (){
+                  muteVolume(id, "reciter");
+                },
+                child: ImageIcon(
+                  idSoundMuted == "reciter$id"?AssetImage("assets/icons/Volume mute.png") :AssetImage("assets/icons/Volume High.png"),
+                  size: 28,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Future<void> playOrPause(String url, int id, String type) async{
+
+    if(idSoundPlayed == "$type$id")
+    {
+      player.pause();
+      idSoundPlayed = null;
+      setState(() {});
+    }
+    else
+    {
+      player.pause();
+      idSoundPlayed = "$type$id";
+      await player.play(UrlSource(url)).then((e){
+        setState(() {});
+      });
+    }
+
+  }
+
+  Future<void> muteVolume(int id, String type)async{
+    if(idSoundPlayed == null) {
+      return;
+    }
+    if(idSoundMuted == "$type$id")
+    {
+      await player.setVolume(1);
+      idSoundMuted = null;
+    }
+    else if(idSoundPlayed=="$type$id")
+    {
+      await player.setVolume(0);
+      idSoundMuted = "$type$id";
+    }
+
+    setState(() {});
+  }
+
+
+
+}

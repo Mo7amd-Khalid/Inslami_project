@@ -4,7 +4,7 @@ import 'package:islami_app/core/style/text_style.dart';
 import '../../../core/style/colors.dart';
 
 class SebhaTabScreen extends StatefulWidget {
-  SebhaTabScreen({super.key});
+  const SebhaTabScreen({super.key});
 
   @override
   State<SebhaTabScreen> createState() => _SebhaTabScreenState();
@@ -78,13 +78,18 @@ class _SebhaTabScreenState extends State<SebhaTabScreen> {
                         InkWell(
                           onTap: (){
                             turns += (12 / 360);
-                            if(counter < 33) {
+                            if(counter < 132) {
+                              if(counter != 0 && counter % 33 == 0)
+                              {
+                                zekr++;
+                              }
                               counter++;
+
                             }
                             else
                               {
                                 counter = 0;
-                                zekr++;
+                                zekr = 0;
                               }
                             setState(() {});
                           },

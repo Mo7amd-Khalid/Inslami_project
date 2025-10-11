@@ -40,6 +40,7 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   animated_rotation: ^2.0.0
   dio: ^5.9.0
+  audioplayers: ^6.5.1
 
 flutter_native_splash:
   color: "#202020"
@@ -76,6 +77,7 @@ flutter:
     - assets/icons/
     - assets/Suras/
     - assets/hadeeth/
+    - assets/azkar/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

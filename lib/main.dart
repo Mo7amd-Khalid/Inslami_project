@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'UI/home/home_screen.dart';
 import 'UI/tabs/hadeth_tab/hadeth_display_screen.dart';
 import 'UI/tabs/quran_tab/quran_details_screen.dart';
+import 'UI/tabs/radio_tab/reciter_screen.dart';
+import 'UI/tabs/time_tab/azkar_details.dart';
 
 
 
@@ -28,7 +30,9 @@ class MyApp extends StatelessWidget {
         OnBoardingScreen.routeName : (_) => OnBoardingScreen(),
         HomeScreen.routeName : (_) => HomeScreen(),
         QuranDetailsScreen.routeName : (_) => QuranDetailsScreen(),
-        HadethDisplayScreen.routeName : (_) => HadethDisplayScreen()
+        HadethDisplayScreen.routeName : (_) => HadethDisplayScreen(),
+        AzkarDetails.routeName : (_) => AzkarDetails(),
+        ReciterScreen.routeName : (_) => ReciterScreen(),
       },
       initialRoute: onboarding == null? OnBoardingScreen.routeName : HomeScreen.routeName,
     );

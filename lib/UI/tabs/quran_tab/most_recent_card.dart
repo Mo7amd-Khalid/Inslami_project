@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/style/colors.dart';
 import '../../../core/style/text_style.dart';
-import '../../../model/suraDM.dart';
+import '../../../model/sura-dm.dart';
 
 
 
