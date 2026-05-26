@@ -41,6 +41,10 @@ dependencies:
   animated_rotation: ^2.0.0
   dio: ^5.9.0
   audioplayers: ^6.5.1
+  flutter_bloc:
+  injectable:
+  get_it:
+
 
 flutter_native_splash:
   color: "#202020"
@@ -58,6 +62,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  injectable_generator:
+  build_runner:
+  retrofit_generator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
