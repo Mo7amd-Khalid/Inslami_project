@@ -15,11 +15,36 @@ class ReciterScreen extends StatefulWidget {
 
 class _ReciterScreenState extends State<ReciterScreen> {
 
+  @override
+  void initState() {
+    super.initState();
+    player.onPlayerStateChanged.listen((e){
+      setState(() {
+        print(e);
+      });
+    });
+
+    player.onDurationChanged.listen((newDuration){
+      setState(() {
+        duration = newDuration;
+      });
+    });
+
+    player.onPositionChanged.listen((newPosition){
+      setState(() {
+        position = newPosition;
+      });
+    });
+  }
+
   final player = AudioPlayer();
 
 
   String? idSoundPlayed;
   String? idSoundMuted;
+
+  Duration duration = Duration.zero;
+  Duration position = Duration.zero;
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +96,11 @@ class _ReciterScreenState extends State<ReciterScreen> {
 
   }
 
-  Widget reciterListItem(String title, int id, String url){
+  Widget reciterListItem(String title, int id, String url) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12),
       width: double.infinity,
-      height: MediaQuery.of(context).size.height*0.15,
+      height: MediaQuery.of(context).size.height*0.17,
       decoration: BoxDecoration(
           color: AppColors.gold,
           borderRadius: BorderRadius.circular(20),
@@ -93,7 +119,7 @@ class _ReciterScreenState extends State<ReciterScreen> {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: 30,
+            height: 25,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +144,30 @@ class _ReciterScreenState extends State<ReciterScreen> {
                 ),
               ),
             ],
-          )
+          ),
+          if(idSoundPlayed == "reciter$id")
+            Slider(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              min:0,
+                max: duration.inSeconds.toDouble(),
+                value: position.inSeconds.toDouble(),
+                activeColor: AppColors.brown,
+                onChanged: (value){
+                final position = Duration(seconds: value.toInt());
+                player.seek(position);
+                player.resume();
+                }),
+          if(idSoundPlayed == "reciter$id")
+            Row(
+              children: [
+                Text(formatTime(position.inSeconds)),
+                Spacer(),
+                Text(formatTime((duration-position).inSeconds)),
+              ],
+            ),
+
+
+
         ],
       ),
     );
@@ -136,7 +185,7 @@ class _ReciterScreenState extends State<ReciterScreen> {
     {
       player.pause();
       idSoundPlayed = "$type$id";
-      await player.play(UrlSource(url)).then((e){
+      player.play(UrlSource(url)).then((e){
         setState(() {});
       });
     }
@@ -160,6 +209,13 @@ class _ReciterScreenState extends State<ReciterScreen> {
 
     setState(() {});
   }
+
+  String formatTime(int seconds){
+    return '${(Duration(seconds: seconds))}'.split('.')[0].padLeft(8,'0');
+
+  }
+
+
 
 
 

@@ -1,40 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/UI/onboarding/onboarding_screen.dart';
+import 'package:islami_app/core/constant/keywords.dart';
+import 'package:islami_app/core/di/di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'UI/home/home_screen.dart';
-import 'UI/tabs/hadeth_tab/hadeth_display_screen.dart';
-import 'UI/tabs/quran_tab/quran_details_screen.dart';
-import 'UI/tabs/radio_tab/reciter_screen.dart';
-import 'UI/tabs/time_tab/azkar_details.dart';
+import 'core/routes/app_route.dart';
+import 'core/routes/routes.dart';
 
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences preferences = await SharedPreferences.getInstance();
-  bool? onboarding = preferences.getBool("onboarding");
+  await configureDependencies();
+  SharedPreferences preferences = getIt();
+  bool? onboarding = preferences.getBool(AppKeywords.onboardingKeyword);
   runApp(MyApp(onboarding: onboarding,));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({this.onboarding, super.key});
-
   final bool? onboarding;
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {
-        OnBoardingScreen.routeName : (_) => OnBoardingScreen(),
-        HomeScreen.routeName : (_) => HomeScreen(),
-        QuranDetailsScreen.routeName : (_) => QuranDetailsScreen(),
-        HadethDisplayScreen.routeName : (_) => HadethDisplayScreen(),
-        AzkarDetails.routeName : (_) => AzkarDetails(),
-        ReciterScreen.routeName : (_) => ReciterScreen(),
-      },
-      initialRoute: onboarding == null? OnBoardingScreen.routeName : HomeScreen.routeName,
+      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: onboarding == true ? Routes.homeViews : Routes.onboardingViews,
     );
   }
 }
