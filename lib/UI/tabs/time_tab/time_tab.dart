@@ -1,11 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/UI/tabs/time_tab/azkar_details.dart';
-import 'package:islami_app/core/style/text_style.dart';
 import 'package:islami_app/model/azkar_dm.dart';
 import 'package:islami_app/model/time_dm.dart';
 
-import '../../../core/style/colors.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/utils/context_func.dart';
+
 
 class TimeTabScreen extends StatefulWidget {
   const TimeTabScreen({super.key});
@@ -55,7 +56,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                     alignment: Alignment.center,
                     child: Image.asset(
                       "assets/images/img_header.png",
-                      color: AppColors.gold,
+                      color: AppColors.gold500,
                       width: MediaQuery.of(context).size.width*0.6,
                     ),
                   ),
@@ -71,7 +72,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                             child: Container(
                               height: size.height*0.32,
                               decoration: BoxDecoration(
-                                  color: AppColors.brown,
+                                  color: AppColors.gold50,
                                   borderRadius: BorderRadius.circular(40),
                                   image: DecorationImage(
                                       image: AssetImage("assets/images/time_container.png"),
@@ -81,7 +82,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                               child: TimeDM.dateMeladi == null ||
                                   TimeDM.dateHigri == null ||
                                   TimeDM.prays == null ? Center(
-                                child: CircularProgressIndicator(color: AppColors.gray,),
+                                child: CircularProgressIndicator(color: AppColors.black,),
                               ): Column(
                                 spacing: 20,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -97,7 +98,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                                         children: [
                                           Text(
                                             "${TimeDM.dateMeladi!["date"].split("-")[0]} ${TimeDM.dateMeladi!["month"]["en"].substring(0,3)}\n${TimeDM.dateMeladi!["date"].split("-")[2]}",
-                                            style: AppTextStyle.smallLabel(color: AppColors.white),
+                                            style: context.textStyle.titleMedium,
                                             textAlign: TextAlign.start,
                                           ),
                                           Expanded(
@@ -107,19 +108,19 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                                                 Text(
                                                   "Pray Time",
                                                   textAlign: TextAlign.center,
-                                                  style: AppTextStyle.largeLabel(color: AppColors.gray),
+                                                  style: context.textStyle.titleMedium,
                                                 ),
                                                 Text(
                                                   TimeDM.dateMeladi!["weekday"]["en"],
                                                   textAlign: TextAlign.center,
-                                                  style: AppTextStyle.mediumTitle(color: AppColors.black),
+                                                  style: context.textStyle.titleMedium,
                                                 ),
                                               ],
                                             ),
                                           ),
                                           Text(
                                               "${TimeDM.dateHigri!["date"].split("-")[0]} ${TimeDM.dateHigri!["month"]["en"].substring(0,3)}\n${TimeDM.dateHigri!["date"].split("-")[2]}",
-                                              style: AppTextStyle.smallLabel(color: AppColors.white),
+                                              style: context.textStyle.titleMedium,
                                               textAlign: TextAlign.end
                                           ),
                                         ],
@@ -130,7 +131,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                                     flex: 4,
                                     child: TimeDM.prays == null? Center(
                                       child: CircularProgressIndicator(
-                                        color: AppColors.gold,
+                                        color: AppColors.gold50,
                                       ),
                                     ) :
                                     CarouselSlider(
@@ -139,7 +140,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                                             width: double.infinity,
                                             decoration: BoxDecoration(
                                                 gradient: LinearGradient(
-                                                  colors: [AppColors.black, AppColors.gold],
+                                                  colors: [AppColors.black, AppColors.gold500],
                                                   begin: Alignment.topLeft,
                                                   end: Alignment.bottomRight,
                                                 ),
@@ -150,15 +151,15 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                                               children: [
                                                 Text(
                                                     e,
-                                                    style: AppTextStyle.mediumTitle(color: AppColors.white)
+                                                    style: context.textStyle.titleMedium
                                                 ),
                                                 Text(
                                                     prayTime(TimeDM.prays![e]),
-                                                    style: AppTextStyle.largeTitle(color: AppColors.white)
+                                                    style: context.textStyle.titleMedium
                                                 ),
                                                 Text(
                                                     TimeDM.prays![e] == prayTime(TimeDM.prays![e]) ? "AM" : "PM",
-                                                    style: AppTextStyle.mediumTitle(color: AppColors.white)
+                                                    style: context.textStyle.titleMedium
                                                 ),
                                               ],
                                             ),
@@ -178,7 +179,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                           sliver: SliverToBoxAdapter(
                             child: Text(
                               "Azkar",
-                              style: AppTextStyle.smallTitle(color: AppColors.white),
+                              style: context.textStyle.titleMedium,
                             ),
                           ), padding: EdgeInsets.only(
                           bottom: 20
@@ -284,7 +285,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                     color: AppColors.black,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: AppColors.gold,
+                      color: AppColors.gold500,
                       width: 2,
                     )
                 ),
@@ -296,7 +297,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                     Text(
                       leftText,
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.mediumLabel(color: AppColors.white),
+                      style: context.textStyle.titleMedium,
                     )
                   ],
                 ),
@@ -312,7 +313,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                     color: AppColors.black,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: AppColors.gold,
+                      color: AppColors.gold500,
                       width: 2,
                     )
                 ),
@@ -324,7 +325,7 @@ class _TimeTabScreenState extends State<TimeTabScreen> {
                     Text(
                       rightText,
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.mediumLabel(color: AppColors.white),
+                      style: context.textStyle.titleMedium,
                     )
                   ],
                 ),

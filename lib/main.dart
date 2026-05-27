@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/di/di.dart';
+import 'package:islami_app/core/theme/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/routes/app_route.dart';
 import 'core/routes/routes.dart';
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.generateRoute,
       initialRoute: onboarding == true ? Routes.homeViews : Routes.onboardingViews,

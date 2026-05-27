@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:islami_app/UI/home/home_screen.dart';
+import 'package:islami_app/core/utils/context_func.dart';
 import 'package:islami_app/core/constant/image.dart';
 import 'package:islami_app/core/di/di.dart';
-import 'package:islami_app/core/style/colors.dart';
-import 'package:islami_app/core/style/text_style.dart';
 import 'package:islami_app/presentation/onboarding/cubit/onboarding_contract.dart';
 import 'package:islami_app/presentation/onboarding/cubit/onboarding_cubit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../core/routes/routes.dart';
+import '../../core/theme/app_colors.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -51,7 +48,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: Image.asset(
                         AppImages.header,
                       width: MediaQuery.of(context).size.width*0.7,
-                      color: AppColors.gold,
+                      color: AppColors.gold500,
                     ),
                   ),
                   SizedBox(height: 25,),
@@ -65,7 +62,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     flex: 2,
                     child: Text(
                       state.onboarding[state.currentIndex].title,
-                      style: AppTextStyle.smallTitle(),),
+                      style:context.textStyle.bodyLarge,),
                   ),
                   if(state.onboarding[state.currentIndex].content != null)
                     Expanded(
@@ -73,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: Text(
                       state.onboarding[state.currentIndex].content!,
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.smallTitle(),),
+                      style: context.textStyle.bodyMedium,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,14 +83,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           },
                           child: Text(
                             state.currentIndex != 0? "Back" : "",
-                            style: AppTextStyle.smallLabel(),
+                            style: context.textStyle.bodySmall,
                           )),
                       Expanded(
                         child: Align(
                           alignment: Alignment.center,
                           child: AnimatedSmoothIndicator(
                             effect: ExpandingDotsEffect(
-                              activeDotColor: AppColors.gold,
+                              activeDotColor: AppColors.gold500,
                               expansionFactor: 2,
                               dotHeight: 10,
                               dotWidth: 10
@@ -118,9 +115,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           },
                           child: Text(
                               state.currentIndex == 4? "Finish" : "Next",
-                            style: AppTextStyle.smallLabel(),
+                            style: context.textStyle.bodySmall,
                           )),
-
                     ],
                   )
                 ],
@@ -130,12 +126,5 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> closeOnBoarding(context) async{
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setBool("onboarding", false);
-    Navigator.pushNamed(context, HomeScreen.routeName);
-    setState(() {});
   }
 }

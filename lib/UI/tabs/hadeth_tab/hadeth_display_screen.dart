@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/model/hadeth_dm.dart';
 
-import '../../widget/content_display_screen.dart';
+import '../../../presentation/display_content/display_content_screen.dart';
 
 class HadethDisplayScreen extends StatelessWidget {
   const HadethDisplayScreen({super.key});
@@ -12,10 +12,8 @@ class HadethDisplayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var hadith = ModalRoute.of(context)!.settings.arguments as HadethDM;
-    return ContentDisplayScreen(
-      titleAR: hadith.title,
-      titleEN: "Hadith ${hadith.hadethNumber}",
-      content: hadith.content,
+    return DisplayContentScreen(
+      arguments: {},
 
     );
   }
