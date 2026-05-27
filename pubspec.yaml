@@ -46,12 +46,6 @@ dependencies:
   get_it:
 
 
-flutter_native_splash:
-  color: "#202020"
-  image: assets/images/logo.png
-  branding: assets/images/branding.png
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

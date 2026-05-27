@@ -2,8 +2,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/model/sura-dm.dart';
 
-import '../../../core/style/colors.dart';
-import '../../../core/style/text_style.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/utils/context_func.dart';
 
 class ReciterScreen extends StatefulWidget {
   const ReciterScreen({super.key});
@@ -60,7 +60,7 @@ class _ReciterScreenState extends State<ReciterScreen> {
         scrolledUnderElevation: 0,
         toolbarHeight: 40,
         backgroundColor: AppColors.black,
-        foregroundColor: AppColors.gold,
+        foregroundColor: AppColors.gold500,
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -72,22 +72,22 @@ class _ReciterScreenState extends State<ReciterScreen> {
                 Expanded(child:
                 Text(
                   item["name"],
-                  style: AppTextStyle.mediumTitle(),
+                  style: context.textStyle.titleMedium,
                   textAlign: TextAlign.center,
                 )),
                 Image.asset("assets/images/img_right_corner.png"),
               ],
             ),
-            Expanded(child: 
-            ListView.separated(
-                itemBuilder: (_,index)=>reciterListItem(SuraDM.suras[
-                  int.parse(item["moshaf"][0]["surah_list"].split(",")[index]) - 1
-                ].nameEN, index, surasURL[index]),
-                separatorBuilder: (_,index)=>SizedBox(height: 16,),
-                itemCount: item["moshaf"][0]["surah_total"])),
+            // Expanded(child:
+            // ListView.separated(
+            //     itemBuilder: (_,index)=>reciterListItem(SuraDM.suras[
+            //       int.parse(item["moshaf"][0]["surah_list"].split(",")[index]) - 1
+            //     ].nameEN, index, surasURL[index]),
+            //     separatorBuilder: (_,index)=>SizedBox(height: 16,),
+            //     itemCount: item["moshaf"][0]["surah_total"])),
             Image.asset(
               "assets/images/Mosque-02.png",
-              color: AppColors.gold,)
+              color: AppColors.gold500,)
           ],
         ),
       ),
@@ -102,7 +102,7 @@ class _ReciterScreenState extends State<ReciterScreen> {
       width: double.infinity,
       height: MediaQuery.of(context).size.height*0.17,
       decoration: BoxDecoration(
-          color: AppColors.gold,
+          color: AppColors.gold500,
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
             image: idSoundPlayed == "reciter$id" ?AssetImage("assets/images/sound-wave.png") : AssetImage("assets/images/Mosque-02.png"),
@@ -115,7 +115,7 @@ class _ReciterScreenState extends State<ReciterScreen> {
         children: [
           Text(
             title,
-            style: AppTextStyle.smallLabel(color: AppColors.black),
+            style: context.textStyle.titleMedium,
             textAlign: TextAlign.center,
           ),
           SizedBox(
@@ -151,7 +151,7 @@ class _ReciterScreenState extends State<ReciterScreen> {
               min:0,
                 max: duration.inSeconds.toDouble(),
                 value: position.inSeconds.toDouble(),
-                activeColor: AppColors.brown,
+                activeColor: AppColors.gold100,
                 onChanged: (value){
                 final position = Duration(seconds: value.toInt());
                 player.seek(position);

@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/UI/tabs/hadeth_tab/hadeth_display_screen.dart';
-import 'package:islami_app/core/style/colors.dart';
-import 'package:islami_app/core/style/text_style.dart';
+
 import 'package:islami_app/model/hadeth_dm.dart';
+
+import '../../../core/theme/app_colors.dart';
 
 class HadethTabScreen extends StatefulWidget {
   const HadethTabScreen({super.key});
@@ -51,7 +52,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                   alignment: Alignment.center,
                   child: Image.asset(
                     "assets/images/img_header.png",
-                    color: AppColors.gold,
+                    color: AppColors.gold500,
                     width: MediaQuery.of(context).size.width*0.6,
                   ),
                 ),
@@ -64,7 +65,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(24),
-                              color: AppColors.gold,
+                              color: AppColors.gold500,
                               image: DecorationImage(
                                   image: AssetImage("assets/images/HadithCardBackGround.png"),
                               )
@@ -82,7 +83,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                       Expanded(child: Text(
                                         textAlign: TextAlign.center,
                                           hadeth.title,
-                                        style: AppTextStyle.largeLabel(color: AppColors.black),
+                                        //style: AppTextStyle.largeLabel(color: AppColors.black),
                                       )),
                                       Image.asset("assets/images/img_right_corner.png",color: AppColors.black,),
                                     ],
@@ -94,10 +95,6 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                     child: Text(
                                         hadeth.content,
                                       textAlign: TextAlign.center,
-                                      style: AppTextStyle.largeBody(color: AppColors.black).copyWith(
-                                        height: 2,
-                                      ),
-                                    
                                     ),
                                   ),
                                 )),

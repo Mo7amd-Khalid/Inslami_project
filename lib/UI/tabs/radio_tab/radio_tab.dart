@@ -1,10 +1,10 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/UI/tabs/radio_tab/reciter_screen.dart';
-import 'package:islami_app/core/style/text_style.dart';
 import 'package:islami_app/model/radio-dm.dart';
 
-import '../../../core/style/colors.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/utils/context_func.dart';
 
 class RadioTabScreen extends StatefulWidget {
   const RadioTabScreen({super.key});
@@ -58,7 +58,7 @@ class _RadioTabScreenState extends State<RadioTabScreen> {
                           alignment: Alignment.center,
                           child: Image.asset(
                             "assets/images/img_header.png",
-                            color: AppColors.gold,
+                            color: AppColors.gold500,
                             width: size.width*0.6,
                           ),
                         ),
@@ -80,7 +80,7 @@ class _RadioTabScreenState extends State<RadioTabScreen> {
                         Expanded(
                           child: RadioDM.radios == null || RadioDM.reciters == null? Center(
                             child: CircularProgressIndicator(
-                              color: AppColors.gold,
+                              color: AppColors.gold500,
                             ),
                           ): CustomScrollView(
                             slivers: [
@@ -107,10 +107,10 @@ class _RadioTabScreenState extends State<RadioTabScreen> {
                                           Navigator.pushNamed(context, ReciterScreen.routeName, arguments: RadioDM.reciters![index]);
                                         },
                                         child: CircleAvatar(
-                                          backgroundColor: AppColors.gold,
+                                          backgroundColor: AppColors.gold500,
                                           child: Text(
                                               RadioDM.reciters![index]["name"],
-                                            style: AppTextStyle.smallLabel(color: AppColors.black),
+                                            style: context.textStyle.titleMedium,
                                             textAlign: TextAlign.center,
                                           ),
                                         ),
@@ -139,7 +139,7 @@ class _RadioTabScreenState extends State<RadioTabScreen> {
   Widget tabItem(String title, bool isSelected){
     return Container(
       decoration: BoxDecoration(
-          color: isSelected?AppColors.gold:AppColors.black,
+          color: isSelected?AppColors.gold500:AppColors.black,
           borderRadius: BorderRadius.circular(10)
       ),
       width: double.infinity,
@@ -149,9 +149,7 @@ class _RadioTabScreenState extends State<RadioTabScreen> {
       child: Text(
         title,
         textAlign: TextAlign.center,
-        style: AppTextStyle.smallLabel(
-            color: isSelected?AppColors.black:AppColors.white
-        ),
+        style: context.textStyle.titleMedium,
       ),
     );
   }
@@ -161,7 +159,7 @@ class _RadioTabScreenState extends State<RadioTabScreen> {
       width: double.infinity,
       height: MediaQuery.of(context).size.height*0.15,
       decoration: BoxDecoration(
-          color: AppColors.gold,
+          color: AppColors.gold500,
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
             image: idSoundPlayed == "radio$id" ?AssetImage("assets/images/sound-wave.png") : AssetImage("assets/images/Mosque-02.png"),
@@ -174,7 +172,7 @@ class _RadioTabScreenState extends State<RadioTabScreen> {
         children: [
           Text(
             title,
-            style: AppTextStyle.smallLabel(color: AppColors.black),
+            style: context.textStyle.titleMedium,
             textAlign: TextAlign.center,
           ),
           SizedBox(

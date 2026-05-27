@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/style/text_style.dart';
 
-import '../../../core/style/colors.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/utils/context_func.dart';
+
 
 class SebhaTabScreen extends StatefulWidget {
   const SebhaTabScreen({super.key});
@@ -49,13 +50,13 @@ class _SebhaTabScreenState extends State<SebhaTabScreen> {
                   alignment: Alignment.center,
                   child: Image.asset(
                     "assets/images/img_header.png",
-                    color: AppColors.gold,
+                    color: AppColors.gold500,
                     width: size.width*0.6,
                   ),
                 ),
                 Text(
                     "سَبِّحِ اسْمَ رَبِّكَ الأعلى ",
-                  style: AppTextStyle.largeTitle(color: AppColors.white),
+                  style: context.textStyle.titleMedium,
                 ),
                 Column(
                   children: [
@@ -102,14 +103,14 @@ class _SebhaTabScreenState extends State<SebhaTabScreen> {
                               children: [
                                 Text(
                                     azkar[zekr%4],
-                                  style: AppTextStyle.largeTitle(color: AppColors.white).copyWith(
+                                  style: context.textStyle.titleMedium!.copyWith(
                                     fontSize: 26
                                   ),
                             
                                 ),
                                 Text(
                                     counter.toString(),
-                                  style: AppTextStyle.largeTitle(color: AppColors.white).copyWith(
+                                  style: context.textStyle.titleMedium!.copyWith(
                                       fontSize: 26
                                   ),
                             

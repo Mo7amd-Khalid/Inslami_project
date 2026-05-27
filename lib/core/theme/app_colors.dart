@@ -1,24 +1,33 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-abstract class AppColors {
+class AppColors {
 
-  static const Color blue600 = Color(0xFF2563EB);
-  static const Color blue700 = Color(0xFF1E3A8A);
-  static const Color blue500 = Color(0xFF3B82F6);
-  static const Color blue100 = Color(0xFFDBEAFE);
-  static const Color blue50  = Color(0xFFE0F2FE);
-  static const Color green500 = Color(0xFF22C55E);
-  static const Color green100 = Color(0xFFDCFCE7);
-  static const Color green900 = Color(0xFF14532D);
-  static const Color gray50  = Color(0xFFF9FAFB);
-  static const Color gray200 = Color(0xFFE5E7EB);
-  static const Color gray300 = Color(0xFFCBD5E1);
-  static const Color gray600 = Color(0xFF475569);
-  static const Color gray900 = Color(0xFF0F172A);
-  static const Color red600 = Color(0xFFDC2626);
-  static const Color red100 = Color(0xFFFEE2E2);
-  static const Color red900 = Color(0xFF7F1D1D);
+  // ===== Gold =====
+  static const Color gold50  = Color(0xFFFDF8EE);
+  static const Color gold100 = Color(0xFFF6E7C1);
+  static const Color gold200 = Color(0xFFEFD391);
+  static const Color gold300 = Color(0xFFE7BF61);
+  static const Color gold400 = Color(0xFFE0B347);
+  static const Color gold500 = Color(0xFFD4A24C); // Main Brand
+  static const Color gold600 = Color(0xFFB88735);
+  static const Color gold700 = Color(0xFF8E6826);
+  static const Color gold800 = Color(0xFF684B1A);
+
+  // ===== Bronze =====
+  static const Color bronze400 = Color(0xFFB88A44);
+  static const Color bronze800 = Color(0xFF5B3A16);
+
+  // ===== Black / Background =====
+  static const Color black = Color(0xFF000000);
+
+  static const Color black900 = Color(0xFF121212); // Main Background
+  static const Color black800 = Color(0xFF1A1A1A);
+  static const Color black700 = Color(0xFF2A2A2A);
+
+  // ===== Neutral =====
   static const Color white = Color(0xFFFFFFFF);
-  static const Color black = Color(0xFF1C1C1C);
-  static const Color indigo500 = Color(0xFF6366F1);
+
+  // ===== Error =====
+  static const Color red600 = Color(0xFFD32F2F);
+  static const Color red900 = Color(0xFF7F1D1D);
 }
