@@ -44,6 +44,7 @@ dependencies:
   flutter_bloc:
   injectable:
   get_it:
+  animate_do: ^4.2.0
 
 
 dev_dependencies:
@@ -102,6 +103,9 @@ flutter:
           weight: 600
         - asset: assets/jannat_fonts/alfont_com_خط-جنات-عريض.ttf
           weight: 900
+    - family: moshaf
+      fonts:
+        - asset: assets/hafs/ArbFONTS-KFGQPC-Uthmanic-Script-HAFS-Regular.otf
   # fonts:
   #   - family: Schyler
   #     fonts:

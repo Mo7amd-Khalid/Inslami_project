@@ -21,6 +21,7 @@ import '../../presentation/display_content/cubit/display_content_cubit.dart'
     as _i228;
 import '../../presentation/home/cubit/home_cubit.dart' as _i288;
 import '../../presentation/onboarding/cubit/onboarding_cubit.dart' as _i657;
+import '../../presentation/tabs/bookmark_tab/cubit/bookmark_cubit.dart' as _i78;
 import '../../presentation/tabs/quran_tab/cubit/quran_cubit.dart' as _i457;
 import 'provide_sharedPreferences.dart' as _i1041;
 
@@ -36,18 +37,26 @@ extension GetItInjectableX on _i174.GetIt {
       () => provideSharedPreferences.provideShared(),
       preResolve: true,
     );
-    gh.factory<_i228.DisplayContentCubit>(() => _i228.DisplayContentCubit());
     gh.factory<_i288.HomeCubit>(() => _i288.HomeCubit());
+    gh.factory<_i78.BookmarkCubit>(
+      () => _i78.BookmarkCubit(gh<_i460.SharedPreferences>()),
+    );
     gh.factory<_i756.LocalDatasource>(
       () => _i23.LocalDatasourceImpl(gh<_i460.SharedPreferences>()),
     );
     gh.factory<_i441.RepositoryContract>(
       () => _i212.RepoImpl(gh<_i756.LocalDatasource>()),
     );
-    gh.factory<_i457.QuranCubit>(
+    gh.singleton<_i457.QuranCubit>(
       () => _i457.QuranCubit(
         gh<_i460.SharedPreferences>(),
         gh<_i441.RepositoryContract>(),
+      ),
+    );
+    gh.factory<_i228.DisplayContentCubit>(
+      () => _i228.DisplayContentCubit(
+        gh<_i441.RepositoryContract>(),
+        gh<_i460.SharedPreferences>(),
       ),
     );
     gh.factory<_i657.OnboardingCubit>(

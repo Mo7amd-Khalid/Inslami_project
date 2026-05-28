@@ -30,4 +30,6 @@ class AppColors {
   // ===== Error =====
   static const Color red600 = Color(0xFFD32F2F);
   static const Color red900 = Color(0xFF7F1D1D);
+
+  static const Color gray = Color(0xFFC3C3C3);
 }

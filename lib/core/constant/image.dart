@@ -12,6 +12,7 @@ abstract class AppImages {
   static const String sebhaIcon = "assets/icons/sebha.png";
   static const String radioIcon = "assets/icons/radio.png";
   static const String timeIcon = "assets/icons/time.png";
+  static const String bookmarkIcon = "assets/icons/bookmark.png";
 
 
   static const String quranScreen = "assets/images/quran_screen.png";
