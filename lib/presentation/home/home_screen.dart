@@ -57,38 +57,45 @@ class _HomeScreenState extends State<HomeScreen> {
               items: [
                 BottomNavigationBarItem(
                     icon: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       decoration: boxDecoration(state.currentIndex == 0),
                         child: ImageIcon(AssetImage(AppImages.quranIcon))),
                   label: "Quran"
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 1),
                         child: ImageIcon(AssetImage(AppImages.hadethIcon))),
                   label: "Hadeth"
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 2),
                         child: ImageIcon(AssetImage(AppImages.sebhaIcon))),
                   label: "Sebha"
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 3),
                         child: ImageIcon(AssetImage(AppImages.radioIcon))),
                     label: "Radio"
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 4),
                         child: ImageIcon(AssetImage(AppImages.timeIcon))),
                     label: "Time"
+                ),
+                BottomNavigationBarItem(
+                    icon: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: boxDecoration(state.currentIndex == 5),
+                        child: ImageIcon(AssetImage(AppImages.bookmarkIcon))),
+                    label: "Bookmark"
                 ),
               ]),
         ),
@@ -98,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   BoxDecoration boxDecoration(bool selected){
     return BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(50),
         color: AppColors.black.withAlpha(selected ? 60 : 0)
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/core/constant/image.dart';
+import 'package:islami_app/presentation/tabs/bookmark_tab/bookmark_view.dart';
 
 import '../../../UI/tabs/hadeth_tab/hadeth_tab.dart';
 import '../../../UI/tabs/radio_tab/radio_tab.dart';
@@ -14,6 +15,7 @@ class HomeStates{
     SebhaTabScreen(),
     RadioTabScreen(),
     TimeTabScreen(),
+    BookmarkView(),
   ];
   List<String> backgroundImages = [
     AppImages.quranScreen,
@@ -21,6 +23,7 @@ class HomeStates{
     AppImages.sebhaScreen,
     AppImages.radioScreen,
     AppImages.timeScreen,
+    AppImages.quranScreen,
   ];
   int currentIndex;
 

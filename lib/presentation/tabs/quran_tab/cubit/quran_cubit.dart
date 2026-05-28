@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:islami_app/core/base/base_cubit.dart';
@@ -9,7 +8,7 @@ import 'package:islami_app/model/sura-dm.dart';
 import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_contract.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@injectable
+@singleton
 class QuranCubit extends BaseCubit<QuranState, QuranActions, QuranNavigation> {
   QuranCubit(this._preferences, this._repo) : super(QuranState());
 
@@ -51,7 +50,6 @@ class QuranCubit extends BaseCubit<QuranState, QuranActions, QuranNavigation> {
     for (String suraNumber in data) {
       mostRecent.add(state.suras.data![int.parse(suraNumber) - 1]);
     }
-    print(data.first);
     emit(state.copyWith(mostRecent: Resources.success(data: mostRecent)));
   }
 
