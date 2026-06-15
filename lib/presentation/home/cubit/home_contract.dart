@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/core/constant/image.dart';
+import 'package:islami_app/core/utils/resources.dart';
+import 'package:islami_app/domain/models/QuranDm.dart';
 import 'package:islami_app/presentation/tabs/bookmark_tab/bookmark_view.dart';
 
 import '../../../UI/tabs/hadeth_tab/hadeth_tab.dart';
@@ -26,11 +28,12 @@ class HomeStates{
     AppImages.quranScreen,
   ];
   int currentIndex;
+  Resources<List<QuranDm>> quran;
 
-  HomeStates({this.currentIndex = 0});
+  HomeStates({this.currentIndex = 0, this.quran = const Resources.initial()});
 
-  HomeStates copyWith({int? currentIndex}){
-    return HomeStates(currentIndex: currentIndex ?? this.currentIndex);
+  HomeStates copyWith({int? currentIndex, Resources<List<QuranDm>>? quran}){
+    return HomeStates(currentIndex: currentIndex ?? this.currentIndex, quran: quran ?? this.quran);
   }
 }
 
@@ -39,5 +42,6 @@ class ChangeCurrentIndex extends HomeActions{
   int newIndex;
   ChangeCurrentIndex(this.newIndex);
 }
+class LoadAllAyat extends HomeActions{}
 
 sealed class HomeNavigation{}

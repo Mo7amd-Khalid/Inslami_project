@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/routes/routes.dart';
+import 'package:islami_app/core/utils/resources.dart';
 import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_contract.dart';
 import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_cubit.dart';
 import 'package:islami_app/presentation/widgets/sura_card.dart';
 import '../../../core/constant/image.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/context_func.dart';
-import '../../widgets/most_recent_card.dart';
 
 class QuranTabScreen extends StatefulWidget {
   const QuranTabScreen({super.key});
@@ -25,20 +25,20 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
 
   @override
   void initState() {
-    _quranCubit.doAction(GetSurasList());
-    _quranCubit.doAction(GetMostResentData());
+    _quranCubit.doAction(GetSurahList());
     _quranCubit.navigation.listen((event){
       switch(event) {
         case NavigateToSuraScreen():
           Navigator.pushNamed(context, Routes.displayContentViews, arguments: {
-            "sura" : event.sura,},);
+            "surahName" : event.sura.nameEn,
+            "surahPage" : event.sura.pageNumber,
+          },);
       }
     });
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider.value(
       value: _quranCubit,
       child: BlocBuilder<QuranCubit, QuranState>(
@@ -46,7 +46,6 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 20,
               children: [
                 Align(
@@ -91,66 +90,46 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
                   ),
 
                 ),
-                Expanded(
-                  child: state.search.data == null?
-                  CustomScrollView(
-                    slivers: [
-                      if(state.mostRecent.data!.isNotEmpty)
-                        SliverToBoxAdapter(
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Text(
-                                "Most Recent",
-                                style: context.textStyle.titleMedium
-                            ),
-                          ),
-                        ),
-
-                      if(state.mostRecent.data!.isNotEmpty)
-                        SliverToBoxAdapter(
-                          child: SizedBox(
-                            height: 180,
-                            child: ListView.separated(
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (_,index) => MostRecentCard(
-                                  sura: state.mostRecent.data![index],
-                                  onClick: ()async{
-                                    _quranCubit.doAction(GoToSuraScreen(context, state.mostRecent.data![index]));
-                                  } ,
+                state.search.data == null?
+                    switch(state.suras.state) {
+                      States.initial => CircularProgressIndicator(),
+                      States.loading => Center(child: CircularProgressIndicator()),
+                      States.success => Expanded(
+                        child: CustomScrollView(
+                          slivers: [
+                            SliverToBoxAdapter(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                child: Text(
+                                    "Suras List",
+                                    style: context.textStyle.titleMedium
                                 ),
-                                separatorBuilder: (_,_) => SizedBox(width: 15,),
-                                itemCount: state.mostRecent.data!.length),
-                          ),
-                        ),
+                              ),
+                            ),
+                            SliverList.separated(
+                              itemBuilder: (_,index) => SuraCard(
+                                  sura: state.suras.data![index],
+                                  onClick: ()async{
+                                    _quranCubit.doAction(GoToSuraScreen(context, state.suras.data![index]));
+                                  }),
+                              separatorBuilder: (_,_)=> Divider(
+                                color: AppColors.white,
+                                indent: 50,
+                                endIndent: 50,
+                              ),
+                              itemCount: state.suras.data!.length,
+                            )
 
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: Text(
-                              "Suras List",
-                              style: context.textStyle.titleMedium
-                          ),
+                          ],
                         ),
                       ),
-                      SliverList.separated(
-                        itemBuilder: (_,index) => SuraCard(
-                          sura: state.suras.data![index],
-                          onClick: ()async{
-                            _quranCubit.doAction(GoToSuraScreen(context, state.suras.data![index]));
-                          }),
-                        separatorBuilder: (_,_)=> Divider(
-                          color: AppColors.white,
-                          indent: 50,
-                          endIndent: 50,
-                        ),
-                        itemCount: state.suras.data!.length,
-                      )
-
-                    ],
-                  ) :
-                  state.search.data!.isEmpty?
-                  Center(child: Text("No Item Found",style: context.textStyle.labelLarge,)) :
-                  ListView.separated(
+                      States.failure => Text("Error"),
+                    }
+                 :
+                state.search.data!.isEmpty?
+                Center(child: Text("No Item Found",style: context.textStyle.labelLarge,)) :
+                Expanded(
+                  child: ListView.separated(
                       itemBuilder: (_,index) =>SuraCard(
                         sura: state.search.data![index],
                         onClick: ()async{
@@ -180,8 +159,5 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
       ),
     );
   }
-
-
-
 
 }

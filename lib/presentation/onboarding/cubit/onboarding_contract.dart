@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constant/image.dart';
-import '../../../model/onboarding_dm.dart';
+import '../../../domain/models/onboarding_dm.dart';
 
 class OnboardingState{
   List<OnBoardingDM> onboarding = [

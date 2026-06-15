@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/domain/models/surah_dm.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/utils/context_func.dart';
-import '../../model/sura-dm.dart';
 
 
 class SuraCard extends StatelessWidget{
-  final SuraDM sura;
+  final SurahDm sura;
   final Future<void> Function() onClick;
-  const SuraCard({required this.sura, required this.onClick});
+  const SuraCard({super.key, required this.sura, required this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class SuraCard extends StatelessWidget{
                 width: MediaQuery.of(context).size.width*0.15,
               ),
               Text(
-                sura.suraNumber.toString(),
+                sura.id.toString(),
                 style: context.textStyle.titleMedium,
               ),
             ],
@@ -35,17 +35,17 @@ class SuraCard extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    sura.nameEN,
+                    sura.nameEn!,
                     style: context.textStyle.titleMedium,
                   ),
                   Text(
-                    sura.numberOfAyats,
+                    sura.versesCount.toString(),
                     style: context.textStyle.titleMedium,
                   ),
                 ],
               )),
           Text(
-            sura.nameAR,
+            sura.nameAr!,
             style: context.textStyle.titleMedium,
           ),
         ],

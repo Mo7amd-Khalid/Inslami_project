@@ -1,53 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/core/utils/resources.dart';
-import 'package:islami_app/model/sura-dm.dart';
 
 class DisplayContentState {
-  Resources<List<String>> content;
-  Resources<String> titleEn;
-  Resources<String> titleAr;
-  Resources<int> selectedAya;
+  String selectedAyah;
   Resources<bool> appBarStatus;
-  Resources<List<int>> bookMarks;
+  Resources<List<String>> bookMarks;
+
 
   DisplayContentState({
-    this.content = const Resources.initial(),
-    this.titleEn = const Resources.initial(),
-    this.titleAr = const Resources.initial(),
-    this.selectedAya = const Resources.initial(),
+    this.selectedAyah = "",
     this.appBarStatus = const Resources.initial(),
     this.bookMarks = const Resources.initial(),
   });
 
   DisplayContentState copyWith({
-    Resources<List<String>>? content,
-    Resources<String>? titleEn,
-    Resources<String>? titleAr,
-    Resources<int>? selectedAya,
+    Resources<String>? surahNameEn,
+    Resources<String>? surahNameAr,
+    String? selectedAyah,
     Resources<bool>? appBarStatus,
-    Resources<List<int>>? bookMarks,
+    Resources<List<String>>? bookMarks,
   }) {
     return DisplayContentState(
-      content: content ?? this.content,
-      titleEn: titleEn ?? this.titleEn,
-      titleAr: titleAr ?? this.titleAr,
-      selectedAya: selectedAya ?? this.selectedAya,
+      selectedAyah: selectedAyah ?? this.selectedAyah,
       appBarStatus: appBarStatus ?? this.appBarStatus,
-      bookMarks: bookMarks ?? this.bookMarks
+      bookMarks: bookMarks ?? this.bookMarks,
     );
   }
 }
 
 sealed class DisplayContentAction {}
 
-class GetContentOfSura extends DisplayContentAction {
-  SuraDM sura;
-
-  GetContentOfSura(this.sura);
-}
 
 class ChangeSelectedAya extends DisplayContentAction {
-  int selectedAya;
+  String selectedAya;
 
   ChangeSelectedAya(this.selectedAya);
 }
@@ -60,18 +45,26 @@ class ChangeAppBarStatus extends DisplayContentAction {
 
 class SaveBookMark extends DisplayContentAction {
   BuildContext context;
-  int ayaNumber;
+  int ayahNumber;
+  String ayah;
+  int pageNumber;
+  String surahName;
 
-  SaveBookMark(this.context, this.ayaNumber);
+  SaveBookMark(this.context, this.ayahNumber, this.ayah, this.pageNumber, this.surahName);
 }
+
 class RemoveBookMark extends DisplayContentAction {
   BuildContext context;
   int ayaNumber;
+  String ayah;
+  int pageNumber;
+  String surahName;
 
-  RemoveBookMark(this.context, this.ayaNumber);
+  RemoveBookMark(this.context, this.ayaNumber, this.ayah, this.pageNumber, this.surahName);
 }
 
 class GetBookMarks extends DisplayContentAction {
   BuildContext context;
+
   GetBookMarks(this.context);
 }

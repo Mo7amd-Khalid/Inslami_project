@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/model/azkar_dm.dart';
+import 'package:islami_app/domain/models/azkar_dm.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/context_func.dart';

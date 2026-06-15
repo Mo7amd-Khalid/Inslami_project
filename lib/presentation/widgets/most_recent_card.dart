@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/core/utils/context_func.dart';
+import 'package:islami_app/domain/models/surah_dm.dart';
 import '../../core/theme/app_colors.dart';
-import '../../model/sura-dm.dart';
 
 
 
 class MostRecentCard extends StatelessWidget {
   const MostRecentCard({required this.sura,required this.onClick, super.key});
-  final SuraDM sura;
+  final SurahDm sura;
   final Future<void> Function() onClick;
 
   @override
@@ -26,9 +26,9 @@ class MostRecentCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(sura.nameEN, style: context.textStyle.titleMedium!.copyWith(color: AppColors.white),),
-                Text(sura.nameAR, style: context.textStyle.titleMedium!.copyWith(color: AppColors.white),),
-                Text(sura.numberOfAyats, style: context.textStyle.titleMedium!.copyWith(color: AppColors.white),),
+                Text(sura.nameEn!, style: context.textStyle.titleMedium!.copyWith(color: AppColors.white),),
+                Text(sura.nameAr!, style: context.textStyle.titleMedium!.copyWith(color: AppColors.white),),
+                Text(sura.versesCount.toString(), style: context.textStyle.titleMedium!.copyWith(color: AppColors.white),),
               ],
             ),
             Image.asset("assets/images/img_most_recent.png"),
