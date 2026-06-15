@@ -1,7 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:islami_app/model/sura-dm.dart';
-
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/context_func.dart';
 
@@ -49,11 +47,6 @@ class _ReciterScreenState extends State<ReciterScreen> {
   @override
   Widget build(BuildContext context) {
     var item = ModalRoute.of(context)!.settings.arguments as dynamic;
-    List<String>? surasURL = List.generate(item["moshaf"][0]["surah_total"], (index){
-      final surahNumber = (index + 1).toString().padLeft(3, '0');
-      return "${item["moshaf"][0]["server"]}$surahNumber.mp3";
-    });
-
     return Scaffold(
       backgroundColor: AppColors.black,
       appBar: AppBar(

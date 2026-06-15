@@ -20,6 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final HomeCubit _homeCubit = getIt();
 
   @override
+  void initState() {
+    _homeCubit.doAction(LoadAllAyat());
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: _homeCubit,

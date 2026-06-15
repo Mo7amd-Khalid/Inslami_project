@@ -37,7 +37,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => provideSharedPreferences.provideShared(),
       preResolve: true,
     );
-    gh.factory<_i288.HomeCubit>(() => _i288.HomeCubit());
+    gh.singleton<_i288.HomeCubit>(() => _i288.HomeCubit());
     gh.factory<_i78.BookmarkCubit>(
       () => _i78.BookmarkCubit(gh<_i460.SharedPreferences>()),
     );

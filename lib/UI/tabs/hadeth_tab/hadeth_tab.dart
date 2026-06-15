@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/UI/tabs/hadeth_tab/hadeth_display_screen.dart';
 
-import 'package:islami_app/model/hadeth_dm.dart';
+import 'package:islami_app/domain/models/hadeth_dm.dart';
 
 import '../../../core/theme/app_colors.dart';
 

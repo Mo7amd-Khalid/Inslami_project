@@ -70,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: Text(
                       state.onboarding[state.currentIndex].content!,
                       textAlign: TextAlign.center,
-                      style: context.textStyle.bodyMedium,),
+                      style: context.textStyle.bodyLarge,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           },
                           child: Text(
                             state.currentIndex != 0? "Back" : "",
-                            style: context.textStyle.bodySmall,
+                            style: context.textStyle.bodyLarge,
                           )),
                       Expanded(
                         child: Align(
@@ -115,7 +115,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           },
                           child: Text(
                               state.currentIndex == 4? "Finish" : "Next",
-                            style: context.textStyle.bodySmall,
+                            style: context.textStyle.bodyLarge,
                           )),
                     ],
                   )

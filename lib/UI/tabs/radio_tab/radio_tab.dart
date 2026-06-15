@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/UI/tabs/radio_tab/reciter_screen.dart';
-import 'package:islami_app/model/radio-dm.dart';
+import 'package:islami_app/domain/models/radio-dm.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/context_func.dart';
