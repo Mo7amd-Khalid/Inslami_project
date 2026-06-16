@@ -6,8 +6,8 @@ import 'package:islami_app/core/utils/generate_bookmark.dart';
 import 'package:islami_app/core/utils/surah_type.dart';
 import 'package:islami_app/domain/models/QuranDm.dart';
 import 'package:islami_app/domain/models/surah_dm.dart';
-import 'package:islami_app/presentation/display_content/cubit/display_content_contract.dart';
-import 'package:islami_app/presentation/display_content/cubit/display_content_cubit.dart';
+import 'package:islami_app/presentation/display_ayat/cubit/display_ayat_contract.dart';
+import 'package:islami_app/presentation/display_ayat/cubit/display_ayat_cubit.dart';
 
 class DisplayAyatWidget extends StatelessWidget {
   const DisplayAyatWidget({

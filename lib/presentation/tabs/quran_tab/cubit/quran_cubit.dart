@@ -1,10 +1,10 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:islami_app/core/base/base_cubit.dart';
+import 'package:islami_app/core/constant/asssets.dart';
 import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/utils/resources.dart';
+import 'package:islami_app/data/network/results.dart';
 import 'package:islami_app/domain/models/surah_dm.dart';
 import 'package:islami_app/domain/repository/repo.dart';
 import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_contract.dart';
@@ -33,12 +33,13 @@ class QuranCubit extends BaseCubit<QuranState, QuranActions, QuranNavigation> {
   }
 
   Future<void> getSurahList() async{
-    final jsonString = await rootBundle.loadString('assets/json_files/surah.json');
-    final List<dynamic> jsonList = json.decode(jsonString);
-    List<SurahDm> surahList = jsonList
-        .map((json) => SurahDm.fromJson(json))
-        .toList();
-    emit(state.copyWith(suras: Resources.success(data: surahList)));
+    var response = await _repo.getSurahDetails(AppAssets.surahPath);
+    switch(response) {
+      case Success<List<SurahDm>>():
+        emit(state.copyWith(suras: Resources.success(data: response.data)));
+      case Failure<List<SurahDm>>():
+        emit(state.copyWith(suras: Resources.failure(exception: response.exception, message: response.message)));
+    }
   }
 
   void storeInMostRecentData(BuildContext context, int suraNumber) async{

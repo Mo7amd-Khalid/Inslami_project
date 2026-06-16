@@ -4,7 +4,7 @@ import 'package:islami_app/core/utils/resources.dart';
 import 'package:islami_app/domain/models/QuranDm.dart';
 import 'package:islami_app/presentation/tabs/bookmark_tab/bookmark_view.dart';
 
-import '../../../UI/tabs/hadeth_tab/hadeth_tab.dart';
+import '../../tabs/hadeth_tab/hadeth_tab.dart';
 import '../../../UI/tabs/radio_tab/radio_tab.dart';
 import '../../../UI/tabs/sebha_tab/sebha_tab.dart';
 import '../../../UI/tabs/time_tab/time_tab.dart';

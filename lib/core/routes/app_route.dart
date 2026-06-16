@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
-import 'package:islami_app/presentation/display_content/display_content_screen.dart';
+import 'package:islami_app/domain/models/hadeth_dm.dart';
+import 'package:islami_app/presentation/display_ayat/display_ayat_screen.dart';
 import 'package:islami_app/presentation/home/home_screen.dart';
 import 'package:islami_app/core/routes/routes.dart';
 import 'package:islami_app/presentation/onboarding/onboarding_screen.dart';
+import 'package:islami_app/presentation/widgets/hadeth_display_screen.dart';
 
 
 abstract class AppRouter {
@@ -25,11 +27,18 @@ abstract class AppRouter {
           settings: settings,
           builder: (_) => HomeScreen(),
         );
-      case Routes.displayContentViews:
+      case Routes.displayAyatViews:
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => DisplayContentScreen(
+          builder: (_) => DisplayAyatScreen(
             arguments: settings.arguments as Map<String, dynamic>,
+          ),
+        );
+      case Routes.displayHadethViews:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => HadethDisplayScreen(
+            hadith: settings.arguments as HadethDM,
           ),
         );
       default:

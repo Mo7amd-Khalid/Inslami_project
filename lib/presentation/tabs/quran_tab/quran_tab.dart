@@ -7,6 +7,7 @@ import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_contract.dart
 import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_cubit.dart';
 import 'package:islami_app/presentation/widgets/sura_card.dart';
 import '../../../core/constant/image.dart';
+import '../../../core/constant/keywords.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/context_func.dart';
 
@@ -29,9 +30,9 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
     _quranCubit.navigation.listen((event){
       switch(event) {
         case NavigateToSuraScreen():
-          Navigator.pushNamed(context, Routes.displayContentViews, arguments: {
-            "surahName" : event.sura.nameEn,
-            "surahPage" : event.sura.pageNumber,
+          Navigator.pushNamed(context, Routes.displayAyatViews, arguments: {
+            AppKeywords.surahNameArgument : event.sura.nameEn,
+            AppKeywords.surahPageArgument : event.sura.pageNumber,
           },);
       }
     });
@@ -81,7 +82,7 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
                         icon: Icon(
                           Icons.cancel,
                           color: AppColors.gold300,)),
-                    hintText: "Sura Name",
+                    hintText: AppKeywords.suraName,
                     hintStyle: TextStyle(
                         color: AppColors.white
                     ),
@@ -101,7 +102,7 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                                 child: Text(
-                                    "Suras List",
+                                    AppKeywords.suraList,
                                     style: context.textStyle.titleMedium
                                 ),
                               ),
@@ -127,7 +128,7 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
                     }
                  :
                 state.search.data!.isEmpty?
-                Center(child: Text("No Item Found",style: context.textStyle.labelLarge,)) :
+                Center(child: Text(AppKeywords.noItemsFound,style: context.textStyle.labelLarge,)) :
                 Expanded(
                   child: ListView.separated(
                       itemBuilder: (_,index) =>SuraCard(

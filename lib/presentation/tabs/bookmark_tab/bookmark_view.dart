@@ -5,6 +5,7 @@ import 'package:islami_app/core/utils/padding.dart';
 import 'package:islami_app/core/utils/white_spaces.dart';
 import 'package:islami_app/presentation/tabs/bookmark_tab/cubit/bookmark_contract.dart';
 import 'package:islami_app/presentation/tabs/bookmark_tab/cubit/bookmark_cubit.dart';
+import '../../../core/constant/keywords.dart';
 import '../../../core/routes/routes.dart';
 import '../../../core/utils/context_func.dart';
 import '../../widgets/bookmark.dart';
@@ -29,10 +30,10 @@ class _BookmarkViewState extends State<BookmarkView> {
         case NavigateToSurahScreen():
           Navigator.pushNamed(
             context,
-            Routes.displayContentViews,
+            Routes.displayAyatViews,
             arguments: {
-              "surahName": event.suraName,
-              "surahPage": event.suraPage,
+              AppKeywords.surahNameArgument: event.suraName,
+              AppKeywords.surahPageArgument: event.suraPage,
             },
           );
       }
@@ -58,7 +59,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                 children: [
                   if (state.mostRecent.data!.isNotEmpty)
                     Text(
-                      "Most Recent",
+                      AppKeywords.mostRecent,
                       style: context.textStyle.titleMedium,
                     ).allPadding(16),
                   if (state.mostRecent.data!.isNotEmpty)
@@ -93,7 +94,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                     Row(
                       children: [
                         Text(
-                          "Bookmarks",
+                          AppKeywords.bookmarks,
                           style: context.textStyle.titleMedium,
                         ).allPadding(16),
                         const Spacer(),
@@ -101,7 +102,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                           TextButton(onPressed: ()async{
                             await _bookmarkCubit.doAction(DeleteBookmarks(state.selectedBookmark.data??[]));
                             _bookmarkCubit.doAction(ChangeSelectionMode(false));
-                          }, child: Text("Delete"))
+                          }, child: Text(AppKeywords.delete))
                       ],
                     ),
                   if (state.allBookmark.data!.isNotEmpty)
