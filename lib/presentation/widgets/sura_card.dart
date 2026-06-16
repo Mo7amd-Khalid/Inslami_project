@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/core/constant/asssets.dart';
 import 'package:islami_app/domain/models/surah_dm.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/utils/context_func.dart';
@@ -20,7 +21,7 @@ class SuraCard extends StatelessWidget{
             alignment: Alignment.center,
             children: [
               Image.asset(
-                "assets/images/img_sur_number_frame.png",
+               AppAssets.surahNumberLayout,
                 color: AppColors.white,
                 width: MediaQuery.of(context).size.width*0.15,
               ),

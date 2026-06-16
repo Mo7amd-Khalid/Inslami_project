@@ -5,8 +5,9 @@ import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/utils/generate_bookmark.dart';
 import 'package:islami_app/core/utils/resources.dart';
 import 'package:islami_app/domain/repository/repo.dart';
-import 'package:islami_app/presentation/display_content/cubit/display_content_contract.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'display_ayat_contract.dart';
 
 @injectable
 class DisplayContentCubit

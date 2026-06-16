@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/utils/context_func.dart';
 import 'package:islami_app/core/constant/image.dart';
 import 'package:islami_app/core/di/di.dart';
@@ -114,7 +115,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
                           },
                           child: Text(
-                              state.currentIndex == 4? "Finish" : "Next",
+                              state.currentIndex == 4? AppKeywords.finish : AppKeywords.next,
                             style: context.textStyle.bodyLarge,
                           )),
                     ],

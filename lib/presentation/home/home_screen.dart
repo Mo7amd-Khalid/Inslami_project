@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islami_app/core/constant/image.dart';
+import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/theme/app_colors.dart';
 import 'package:islami_app/presentation/home/cubit/home_contract.dart';
@@ -65,42 +66,42 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       decoration: boxDecoration(state.currentIndex == 0),
                         child: ImageIcon(AssetImage(AppImages.quranIcon))),
-                  label: "Quran"
+                  label: AppKeywords.quran
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 1),
                         child: ImageIcon(AssetImage(AppImages.hadethIcon))),
-                  label: "Hadeth"
+                  label: AppKeywords.hadeth
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 2),
                         child: ImageIcon(AssetImage(AppImages.sebhaIcon))),
-                  label: "Sebha"
+                  label: AppKeywords.sebha
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 3),
                         child: ImageIcon(AssetImage(AppImages.radioIcon))),
-                    label: "Radio"
+                    label: AppKeywords.radio
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 4),
                         child: ImageIcon(AssetImage(AppImages.timeIcon))),
-                    label: "Time"
+                    label: AppKeywords.time
                 ),
                 BottomNavigationBarItem(
                     icon: Container(
                         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: boxDecoration(state.currentIndex == 5),
                         child: ImageIcon(AssetImage(AppImages.bookmarkIcon))),
-                    label: "Bookmark"
+                    label: AppKeywords.bookmarks
                 ),
               ]),
         ),
