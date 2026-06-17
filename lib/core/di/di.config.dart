@@ -23,6 +23,7 @@ import '../../presentation/onboarding/cubit/onboarding_cubit.dart' as _i657;
 import '../../presentation/tabs/bookmark_tab/cubit/bookmark_cubit.dart' as _i78;
 import '../../presentation/tabs/hadeth_tab/cubit/hadeth_cubit.dart' as _i827;
 import '../../presentation/tabs/quran_tab/cubit/quran_cubit.dart' as _i457;
+import '../../presentation/tabs/sebha_tab/cubit/sebha_cubit.dart' as _i559;
 import 'provide_sharedPreferences.dart' as _i1041;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -38,6 +39,7 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.factory<_i827.HadethCubit>(() => _i827.HadethCubit());
+    gh.factory<_i559.SebhaCubit>(() => _i559.SebhaCubit());
     gh.factory<_i78.BookmarkCubit>(
       () => _i78.BookmarkCubit(gh<_i460.SharedPreferences>()),
     );

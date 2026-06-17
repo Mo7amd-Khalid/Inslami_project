@@ -63,7 +63,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                     Align(
                       alignment: Alignment.center,
                       child: Image.asset(
-                        AppAssets.islamiLodo,
+                        AppAssets.islamiLogo,
                         color: AppColors.gold500,
                         width: MediaQuery.of(context).size.width*0.6,
                       ),
