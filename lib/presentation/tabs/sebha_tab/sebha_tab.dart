@@ -20,90 +20,73 @@ class _SebhaTabScreenState extends State<SebhaTabScreen> {
   final SebhaCubit _cubit = getIt();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(AppAssets.sebhaBackground),fit: BoxFit.cover)
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin:Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppColors.black.withAlpha(70),
-                AppColors.black,
-              ],
-            )
-        ),
-        child: BlocProvider.value(
-          value: _cubit,
-          child: BlocBuilder<SebhaCubit,SebhaState>(
-            builder:(_,state) => SafeArea(
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      AppAssets.islamiLogo,
-                      color: AppColors.gold500,
-                      width: context.widthSize*0.6,
-                    ),
-                  ),
-                  (context.heightSize * 0.03).verticalSpace,
-                  Text(
-                      "سَبِّحِ اسْمَ رَبِّكَ الأعلى ",
-                    style: context.textStyle.titleLarge,
-                  ),
-                  (context.heightSize * 0.03).verticalSpace,
-                  Image.asset(
-                    AppAssets.sebhaPart1,
-                    width: context.widthSize*0.3,
-                  ),
-                  InkWell(
-                    onTap: (){
-                      _cubit.doAction(ClickOnSebha(state.turns, state.counter, state.zekr));
-                    },
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children:[
-                        AnimatedRotation(
-                            turns: state.turns,
-                            duration: Duration(milliseconds: 450),
-                          child: Image.asset(
-                            AppAssets.sebhaBody,
-                            width: context.widthSize*0.8,
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                                state.azkar[state.zekr%4],
-                              style: context.textStyle.headlineLarge!.copyWith(
-                                fontFamily: "moshaf"
-                              ),
-
-                            ),
-                            Text(
-                                state.counter.toString(),
-                              style: context.textStyle.headlineLarge!.copyWith(
-                                fontFamily: "moshaf"
-                              ),
-
-                            ),
-                          ],
-                        ),
-                      ]
-                    ),
-                  ),
-                  (context.heightSize * 0.03).verticalSpace,
-                  FilledButton(onPressed: (){
-                    _cubit.doAction(ResetCounter());
-                  }, child: Text("Reset counter")),
-
-                ],
+    return BlocProvider.value(
+      value: _cubit,
+      child: BlocBuilder<SebhaCubit,SebhaState>(
+        builder:(_,state) => SafeArea(
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  AppAssets.islamiLogo,
+                  color: AppColors.gold500,
+                  width: context.widthSize*0.6,
+                ),
               ),
-            ),
+              (context.heightSize * 0.03).verticalSpace,
+              Text(
+                  "سَبِّحِ اسْمَ رَبِّكَ الأعلى ",
+                style: context.textStyle.titleLarge,
+              ),
+              (context.heightSize * 0.03).verticalSpace,
+              Image.asset(
+                AppAssets.sebhaPart1,
+                width: context.widthSize*0.3,
+              ),
+              InkWell(
+                onTap: (){
+                  _cubit.doAction(ClickOnSebha(state.turns, state.counter, state.zekr));
+                },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children:[
+                    AnimatedRotation(
+                        turns: state.turns,
+                        duration: Duration(milliseconds: 450),
+                      child: Image.asset(
+                        AppAssets.sebhaBody,
+                        width: context.widthSize*0.8,
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                            state.azkar[state.zekr%4],
+                          style: context.textStyle.headlineLarge!.copyWith(
+                            fontFamily: "moshaf"
+                          ),
+
+                        ),
+                        Text(
+                            state.counter.toString(),
+                          style: context.textStyle.headlineLarge!.copyWith(
+                            fontFamily: "moshaf"
+                          ),
+
+                        ),
+                      ],
+                    ),
+                  ]
+                ),
+              ),
+              (context.heightSize * 0.03).verticalSpace,
+              FilledButton(onPressed: (){
+                _cubit.doAction(ResetCounter());
+              }, child: Text("Reset counter")),
+
+            ],
           ),
         ),
       ),

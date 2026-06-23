@@ -37,109 +37,89 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
     return BlocProvider.value(
       value: _cubit,
       child: BlocBuilder<HadethCubit, HadethState>(
-        builder:(_,state) => Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(AppAssets.hadethBackground),
-                  fit: BoxFit.cover,
-              ),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    AppColors.black.withAlpha(70),
-                    AppColors.black,
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                )
-            ),
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: Image.asset(
-                        AppAssets.islamiLogo,
-                        color: AppColors.gold500,
-                        width: MediaQuery.of(context).size.width*0.6,
-                      ),
-                    ),
-                    Expanded(
-                        child: switch(state.allHadeth.state) {
-                          States.initial => Center(child: CircularProgressIndicator(),),
-                          States.loading => Center(child: CircularProgressIndicator(),),
-                          States.success => CarouselSlider(
-                              items: state.allHadeth.data!.map((hadeth) => InkWell(
-                                onTap: (){
-                                  _cubit.doAction(GoToHadethDisplayScreen(hadeth));
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(24),
-                                      color: AppColors.gold500,
-                                      image: DecorationImage(
-                                        image: AssetImage(AppAssets.hadethCardBackground),
-                                      )
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            AppAssets.hadethCardLeftCorner,
-                                            color: AppColors.black,
-                                            width: context.widthSize * 0.2,
-                                          ),
-                                          Expanded(child: Text(
-                                            textAlign: TextAlign.center,
-                                            hadeth.title,
-                                            style: context.textStyle.titleLarge!.copyWith(fontFamily: "moshaf",color: AppColors.black),
-                                          )),
-                                          Image.asset(
-                                            AppAssets.hadethCardRightCorner,
-                                            color: AppColors.black,
-                                            width: context.widthSize * 0.2,
-                                          ),
-                                        ],
-                                      ).allPadding(10),
-                                      Expanded(child: SingleChildScrollView(
-                                        child: Text(
-                                          hadeth.content,
-                                          textAlign: TextAlign.center,
-                                          style: context.textStyle.bodyLarge!.copyWith(color: AppColors.black),
-                                        ),
-                                      ).horizontalPadding(12)),
-                                      Image.asset(
-                                        AppAssets.hadethCardBottomImage,
-                                        fit: BoxFit.cover,
-                                        width: double.infinity,)
-                                    ],
-                                  ),
-
-                                ),
-                              )).toList(),
-                              options: CarouselOptions(
-                                  height: double.infinity,
-                                  enableInfiniteScroll: true,
-                                  viewportFraction: 0.83,
-                                  animateToClosest: true,
-                                  enlargeCenterPage: true,
-                                  initialPage: 0
-                              )),
-
-                          States.failure => throw UnimplementedError(),
-                        }
-                    ),
-
-                  ],
+        builder:(_,state) => SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    AppAssets.islamiLogo,
+                    color: AppColors.gold500,
+                    width: MediaQuery.of(context).size.width*0.6,
+                  ),
                 ),
-              ),
+                Expanded(
+                    child: switch(state.allHadeth.state) {
+                      States.initial => Center(child: CircularProgressIndicator(),),
+                      States.loading => Center(child: CircularProgressIndicator(),),
+                      States.success => CarouselSlider(
+                          items: state.allHadeth.data!.map((hadeth) => InkWell(
+                            onTap: (){
+                              _cubit.doAction(GoToHadethDisplayScreen(hadeth));
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  color: AppColors.gold500,
+                                  image: DecorationImage(
+                                    image: AssetImage(AppAssets.hadethCardBackground),
+                                  )
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        AppAssets.hadethCardLeftCorner,
+                                        color: AppColors.black,
+                                        width: context.widthSize * 0.2,
+                                      ),
+                                      Expanded(child: Text(
+                                        textAlign: TextAlign.center,
+                                        hadeth.title,
+                                        style: context.textStyle.titleLarge!.copyWith(fontFamily: "moshaf",color: AppColors.black),
+                                      )),
+                                      Image.asset(
+                                        AppAssets.hadethCardRightCorner,
+                                        color: AppColors.black,
+                                        width: context.widthSize * 0.2,
+                                      ),
+                                    ],
+                                  ).allPadding(10),
+                                  Expanded(child: SingleChildScrollView(
+                                    child: Text(
+                                      hadeth.content,
+                                      textAlign: TextAlign.center,
+                                      style: context.textStyle.bodyLarge!.copyWith(color: AppColors.black),
+                                    ),
+                                  ).horizontalPadding(12)),
+                                  Image.asset(
+                                    AppAssets.hadethCardBottomImage,
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,)
+                                ],
+                              ),
+
+                            ),
+                          )).toList(),
+                          options: CarouselOptions(
+                              height: double.infinity,
+                              enableInfiniteScroll: true,
+                              viewportFraction: 0.83,
+                              animateToClosest: true,
+                              enlargeCenterPage: true,
+                              initialPage: 0
+                          )),
+
+                      States.failure => throw UnimplementedError(),
+                    }
+                ),
+
+              ],
             ),
-          )
+          ),
         ),
       ),
     );

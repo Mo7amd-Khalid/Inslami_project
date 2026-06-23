@@ -11,6 +11,7 @@ abstract class AppKeywords{
   static const String hadeth = "Hadeth";
   static const String sebha = "Sebha";
   static const String radio = "Radio";
+  static const String reciters = "Reciters";
   static const String time = "Time";
   static const String finish = "Finish";
   static const String next = "Next";
