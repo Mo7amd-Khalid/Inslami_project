@@ -15,4 +15,10 @@ static const String surahNumberLayout =  "assets/images/img_sur_number_frame.png
 static const String sebhaBackground =  "assets/images/sebha_bg.png";
 static const String sebhaPart1 =  "assets/images/Group 37.png";
 static const String sebhaBody =  "assets/images/SebhaBody 1.png";
+static const String radioBackground =  "assets/images/radio-background.png";
+static const String playIcon =  "assets/icons/play.png";
+static const String pauseIcon =  "assets/icons/Pause.png";
+static const String muteIcon =  "assets/icons/Volume mute.png";
+static const String volumeIcon =  "assets/icons/Volume High.png";
+static const String soundWave =  "assets/images/sound-wave.png";
 }
