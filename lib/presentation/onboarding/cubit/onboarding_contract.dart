@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constant/image.dart';
+import '../../../core/constant/assets.dart';
 import '../../../domain/models/onboarding_dm.dart';
 
 class OnboardingState{

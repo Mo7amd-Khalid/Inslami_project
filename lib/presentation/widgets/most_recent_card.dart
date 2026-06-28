@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/utils/context_func.dart';
 import 'package:islami_app/domain/models/surah_dm.dart';
 import '../../core/theme/app_colors.dart';
@@ -32,7 +32,7 @@ class MostRecentCard extends StatelessWidget {
                 Text(sura.versesCount.toString(), style: context.textStyle.titleMedium!.copyWith(color: AppColors.white),),
               ],
             ),
-            Image.asset(AppAssets.mostRecentImage),
+            Image.asset(AppImages.mostRecentImage),
 
           ],
         ),

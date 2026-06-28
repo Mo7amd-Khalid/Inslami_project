@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:islami_app/core/base/base_cubit.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/data/network/results.dart';
 import 'package:islami_app/domain/models/QuranDm.dart';
 import 'package:islami_app/domain/repository/repo.dart';
@@ -28,7 +28,7 @@ class HomeCubit extends BaseCubit<HomeStates, HomeActions, HomeNavigation>{
   }
 
   void loadAllAyat() async{
-    var response = await _repo.loadAllAyat(AppAssets.ayatPath);
+    var response = await _repo.loadAllAyat(AppJsonFiles.ayatPath);
     switch(response) {
       case Success<List<QuranDm>>():
         emit(state.copyWith(quran: Resources.success(data: response.data),));

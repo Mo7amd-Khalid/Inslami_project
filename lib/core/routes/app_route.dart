@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
+import 'package:islami_app/domain/models/all_azkar_dm.dart';
 import 'package:islami_app/domain/models/hadeth_dm.dart';
 import 'package:islami_app/domain/models/reciters_dm.dart';
 import 'package:islami_app/presentation/display_ayat/display_ayat_screen.dart';
+import 'package:islami_app/presentation/display_azkar/display_azkar_view.dart';
 import 'package:islami_app/presentation/home/home_screen.dart';
 import 'package:islami_app/core/routes/routes.dart';
 import 'package:islami_app/presentation/onboarding/onboarding_screen.dart';
@@ -48,6 +50,13 @@ abstract class AppRouter {
           settings: settings,
           builder: (_) => ReciterView(
             reciter: settings.arguments as Reciters,
+          ),
+        );
+      case Routes.azkarView:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => DisplayAzkarView(
+            azkar: settings.arguments as AllAzkarDm,
           ),
         );
       default:

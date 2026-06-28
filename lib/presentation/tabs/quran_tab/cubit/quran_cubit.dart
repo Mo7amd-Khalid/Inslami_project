@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:islami_app/core/base/base_cubit.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/utils/resources.dart';
 import 'package:islami_app/data/network/results.dart';
@@ -33,7 +33,7 @@ class QuranCubit extends BaseCubit<QuranState, QuranActions, QuranNavigation> {
   }
 
   Future<void> getSurahList() async{
-    var response = await _repo.getSurahDetails(AppAssets.surahPath);
+    var response = await _repo.getSurahDetails(AppJsonFiles.surahPath);
     switch(response) {
       case Success<List<SurahDm>>():
         emit(state.copyWith(suras: Resources.success(data: response.data)));

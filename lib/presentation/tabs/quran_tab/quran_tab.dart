@@ -6,7 +6,7 @@ import 'package:islami_app/core/utils/resources.dart';
 import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_contract.dart';
 import 'package:islami_app/presentation/tabs/quran_tab/cubit/quran_cubit.dart';
 import 'package:islami_app/presentation/widgets/sura_card.dart';
-import '../../../core/constant/image.dart';
+import '../../../core/constant/assets.dart';
 import '../../../core/constant/keywords.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/context_func.dart';
@@ -52,7 +52,7 @@ class _QuranTabScreenState extends State<QuranTabScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Image.asset(
-                    AppImages.header,
+                    AppImages.islamiLogo,
                     color: AppColors.gold300,
                     width: MediaQuery.of(context).size.width*0.6,
                   ),

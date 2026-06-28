@@ -52,7 +52,6 @@ class RadioAndRecitersCubit extends BaseCubit<RadioAndRecitersStates, RadioAndRe
     emit(state.copyWith(radiosChannel: Resources.loading()));
     var response = await _repo.getRadiosChannels();
     switch (response) {
-
       case Success<RadioDm>():
         emit(state.copyWith(radiosChannel: Resources.success(data: response.data!.radios)));
       case Failure<RadioDm>():

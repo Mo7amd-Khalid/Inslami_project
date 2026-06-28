@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/utils/padding.dart';
 import 'package:islami_app/core/utils/white_spaces.dart';
 import 'package:islami_app/presentation/tabs/radio_and_reciters_tab/cubit/radio_and_reciters_contract.dart';
@@ -27,7 +27,7 @@ class RadioListItem extends StatelessWidget {
           color: AppColors.gold800,
           borderRadius: BorderRadius.circular(20),
           image: (!isRadio && isSoundPlayed) ? null : DecorationImage(
-            image: isSoundPlayed ? AssetImage(AppAssets.soundWave) : AssetImage(AppAssets.hadethCardBottomImage),
+            image: isSoundPlayed ? AssetImage(AppImages.soundWave) : AssetImage(AppImages.hadethCardBottomImage),
             alignment: Alignment.bottomCenter,
           )
       ),
@@ -50,7 +50,7 @@ class RadioListItem extends StatelessWidget {
                   playOrPause();
                 },
                 child: ImageIcon(
-                  isSoundPlayed ? AssetImage(AppAssets.pauseIcon) : AssetImage(AppAssets.playIcon),
+                  isSoundPlayed ? AssetImage(AppImages.pauseIcon) : AssetImage(AppImages.playIcon),
                   size: 32,
                 ),
               ),
@@ -59,7 +59,7 @@ class RadioListItem extends StatelessWidget {
                   muteVolume();
                 },
                 child: ImageIcon(
-                  isSoundMute ?AssetImage(AppAssets.muteIcon) :AssetImage(AppAssets.volumeIcon),
+                  isSoundMute ?AssetImage(AppImages.muteIcon) :AssetImage(AppImages.volumeIcon),
                   size: 28,
                 ),
               ),
