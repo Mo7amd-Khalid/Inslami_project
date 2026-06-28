@@ -26,6 +26,8 @@ import '../../presentation/home/cubit/home_cubit.dart' as _i288;
 import '../../presentation/onboarding/cubit/onboarding_cubit.dart' as _i657;
 import '../../presentation/tabs/bookmark_tab/cubit/bookmark_cubit.dart' as _i78;
 import '../../presentation/tabs/hadeth_tab/cubit/hadeth_cubit.dart' as _i827;
+import '../../presentation/tabs/prayers_and_azkar_tab/cubit/prayers_and_azkar_cubit.dart'
+    as _i35;
 import '../../presentation/tabs/quran_tab/cubit/quran_cubit.dart' as _i457;
 import '../../presentation/tabs/radio_and_reciters_tab/cubit/radio_and_reciters_cubit.dart'
     as _i997;
@@ -49,15 +51,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i827.HadethCubit>(() => _i827.HadethCubit());
     gh.factory<_i559.SebhaCubit>(() => _i559.SebhaCubit());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
-    gh.singleton<_i927.ApiClient>(() => _i927.ApiClient(gh<_i361.Dio>()));
+    gh.singleton<_i927.RadioAndReciterApiClient>(
+      () => _i927.RadioAndReciterApiClient(gh<_i361.Dio>()),
+    );
+    gh.singleton<_i927.PrayerApiClient>(
+      () => _i927.PrayerApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i78.BookmarkCubit>(
       () => _i78.BookmarkCubit(gh<_i460.SharedPreferences>()),
     );
+    gh.factory<_i127.RemoteDatasource>(
+      () => _i989.RemoteDatasourceImpl(
+        gh<_i927.RadioAndReciterApiClient>(),
+        gh<_i927.PrayerApiClient>(),
+      ),
+    );
     gh.factory<_i756.LocalDatasource>(
       () => _i23.LocalDatasourceImpl(gh<_i460.SharedPreferences>()),
-    );
-    gh.factory<_i127.RemoteDatasource>(
-      () => _i989.RemoteDatasourceImpl(gh<_i927.ApiClient>()),
     );
     gh.factory<_i441.RepositoryContract>(
       () => _i212.RepoImpl(
@@ -73,6 +83,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i657.OnboardingCubit>(
       () => _i657.OnboardingCubit(gh<_i441.RepositoryContract>()),
+    );
+    gh.factory<_i35.PrayersAndAzkarCubit>(
+      () => _i35.PrayersAndAzkarCubit(gh<_i441.RepositoryContract>()),
     );
     gh.singleton<_i288.HomeCubit>(
       () => _i288.HomeCubit(gh<_i441.RepositoryContract>()),

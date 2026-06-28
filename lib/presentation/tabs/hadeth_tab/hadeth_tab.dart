@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/utils/context_func.dart';
 import 'package:islami_app/core/utils/padding.dart';
@@ -45,7 +45,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Image.asset(
-                    AppAssets.islamiLogo,
+                    AppImages.islamiLogo,
                     color: AppColors.gold500,
                     width: MediaQuery.of(context).size.width*0.6,
                   ),
@@ -64,7 +64,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                   borderRadius: BorderRadius.circular(24),
                                   color: AppColors.gold500,
                                   image: DecorationImage(
-                                    image: AssetImage(AppAssets.hadethCardBackground),
+                                    image: AssetImage(AppImages.hadethCardBackground),
                                   )
                               ),
                               child: Column(
@@ -72,7 +72,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                   Row(
                                     children: [
                                       Image.asset(
-                                        AppAssets.hadethCardLeftCorner,
+                                        AppImages.hadethCardLeftCorner,
                                         color: AppColors.black,
                                         width: context.widthSize * 0.2,
                                       ),
@@ -82,7 +82,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                         style: context.textStyle.titleLarge!.copyWith(fontFamily: "moshaf",color: AppColors.black),
                                       )),
                                       Image.asset(
-                                        AppAssets.hadethCardRightCorner,
+                                        AppImages.hadethCardRightCorner,
                                         color: AppColors.black,
                                         width: context.widthSize * 0.2,
                                       ),
@@ -96,7 +96,7 @@ class _HadethTabScreenState extends State<HadethTabScreen> {
                                     ),
                                   ).horizontalPadding(12)),
                                   Image.asset(
-                                    AppAssets.hadethCardBottomImage,
+                                    AppImages.hadethCardBottomImage,
                                     fit: BoxFit.cover,
                                     width: double.infinity,)
                                 ],

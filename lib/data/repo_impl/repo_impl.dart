@@ -1,14 +1,16 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 import 'package:islami_app/data/datasource/contrarct/local_datasource.dart';
 import 'package:islami_app/data/network/results.dart';
 import 'package:islami_app/domain/models/QuranDm.dart';
+import 'package:islami_app/domain/models/all_azkar_dm.dart';
+import 'package:islami_app/domain/models/prayer_dm.dart';
 import 'package:islami_app/domain/models/radio_dm.dart';
 import 'package:islami_app/domain/models/reciters_dm.dart';
 import 'package:islami_app/domain/models/surah_dm.dart';
 import 'package:islami_app/domain/repository/repo.dart';
-
 import '../datasource/contrarct/remote_datasource.dart';
 
 @Injectable(as: RepositoryContract)
@@ -107,4 +109,62 @@ class RepoImpl extends RepositoryContract {
       }
     }
   }
+
+  @override
+  Future<Results<PrayerData>> getPrayerTimes(int? method, int? school) async{
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Check if location service is enabled
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Failure(message: "Location services are disabled.", exception: Exception());
+    }
+
+    // Check permission
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+
+    if (permission == LocationPermission.denied) {
+      return Failure(exception: Exception(), message: "Location permissions are denied.");
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Failure(exception: Exception(), message: 'Location permissions are permanently denied.');
+    }
+    List<ConnectivityResult> result =
+    await (Connectivity().checkConnectivity());
+    if(result.contains(ConnectivityResult.none)){
+      return Failure(message: "No internet connection", exception: Exception());
+    }
+    else
+      {
+        Position position = await Geolocator.getCurrentPosition(
+          locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
+        );
+        var response = await _remoteDatasource.getPrayerTimes(position.latitude.toString(), position.longitude.toString(), method, school);
+        switch(response) {
+          case Success<PrayerDm>():
+            return Success(data: response.data!.data, message: response.message);
+          case Failure<PrayerDm>():
+            return Failure(exception: response.exception, message: response.message);
+        }
+      }
+
+  }
+
+  @override
+  Future<Results<List<AllAzkarDm>>> getAllAzkar() async{
+    var response = await _localDatasource.getAllAzkar();
+    switch(response) {
+      case Success<List<AllAzkarDm>>():
+        return Success(data: response.data, message: response.message);
+      case Failure<List<AllAzkarDm>>():
+        return Failure(exception: response.exception, message: response.message);
+    }
+  }
+
+
 }

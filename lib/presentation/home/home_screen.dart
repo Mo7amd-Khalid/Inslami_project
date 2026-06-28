@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:islami_app/core/constant/image.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/theme/app_colors.dart';
@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (_,state) => Scaffold(
           resizeToAvoidBottomInset: false,
           body: Container(
+            width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(image: AssetImage(state.backgroundImages[state.currentIndex]),fit: BoxFit.cover),
               ),

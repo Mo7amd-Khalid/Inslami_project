@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/utils/resources.dart';
@@ -8,7 +8,6 @@ import 'package:islami_app/core/utils/white_spaces.dart';
 import 'package:islami_app/presentation/widgets/radio_list_item.dart';
 import 'package:islami_app/presentation/widgets/radio_tab_item.dart';
 import 'package:islami_app/presentation/widgets/reciter_item.dart';
-import '../../../core/constant/image.dart';
 import '../../../core/routes/routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/context_func.dart';
@@ -58,7 +57,7 @@ class _RadioAndRecitersTabScreenState extends State<RadioAndRecitersTab> {
                     Align(
                       alignment: Alignment.center,
                       child: Image.asset(
-                        AppAssets.islamiLogo,
+                        AppImages.islamiLogo,
                         color: AppColors.gold500,
                         width: context.widthSize * 0.6,
                       ),
@@ -126,10 +125,7 @@ class _RadioAndRecitersTabScreenState extends State<RadioAndRecitersTab> {
                       child:
                           state.currentTap == 0
                               ? switch (state.radiosChannel.state) {
-                                States.initial => Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                                States.loading => Center(
+                                States.initial || States.loading => Center(
                                   child: CircularProgressIndicator(),
                                 ),
                                 States.success => state.radiosChannelSearchList.data == null ?

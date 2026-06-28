@@ -4,4 +4,5 @@ abstract class Routes {
   static const String displayAyatViews = "displayAyatView";
   static const String displayHadethViews = "displayHadethView";
   static const String reciterViews = "reciterView";
+  static const String azkarView = "azkarView";
 }

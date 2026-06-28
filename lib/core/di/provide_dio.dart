@@ -9,7 +9,6 @@ abstract class DioModule{
   @lazySingleton
   Dio provideDio(){
     Dio dio = Dio();
-    Map<String, dynamic> headers = {};
     dio.options = BaseOptions(
       receiveTimeout: const Duration(seconds: 120),
       sendTimeout: const Duration(seconds: 120),
@@ -17,7 +16,6 @@ abstract class DioModule{
       validateStatus: (state){
         return true;
       },
-      headers: headers,
     );
     dio.interceptors.add(PrettyDioLogger(
       request: true,

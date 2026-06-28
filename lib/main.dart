@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/theme/app_theme.dart';
@@ -13,6 +14,7 @@ void main() async{
   await configureDependencies();
   SharedPreferences preferences = getIt();
   bool? onboarding = preferences.getBool(AppKeywords.onboardingKeyword);
+  dotenv.load(fileName: ".env");
   runApp(MyApp(onboarding: onboarding,));
 }
 

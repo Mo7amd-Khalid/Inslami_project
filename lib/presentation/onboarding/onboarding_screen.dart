@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islami_app/core/constant/keywords.dart';
 import 'package:islami_app/core/utils/context_func.dart';
-import 'package:islami_app/core/constant/image.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/presentation/onboarding/cubit/onboarding_contract.dart';
 import 'package:islami_app/presentation/onboarding/cubit/onboarding_cubit.dart';
@@ -47,7 +47,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Align(
                     alignment: Alignment.center,
                     child: Image.asset(
-                        AppImages.header,
+                        AppImages.islamiLogo,
                       width: MediaQuery.of(context).size.width*0.7,
                       color: AppColors.gold500,
                     ),

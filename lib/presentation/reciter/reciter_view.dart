@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/utils/context_func.dart';
 import 'package:islami_app/core/utils/generateSurahUrl.dart';
@@ -53,7 +53,7 @@ class _ReciterViewState extends State<ReciterView> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppAssets.radioBackground),
+            image: AssetImage(AppImages.radioBackground),
             fit: BoxFit.cover,
           ),
         ),

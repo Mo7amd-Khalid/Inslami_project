@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:islami_app/core/constant/asssets.dart';
+import 'package:islami_app/core/constant/assets.dart';
 import 'package:islami_app/core/di/di.dart';
 import 'package:islami_app/core/utils/white_spaces.dart';
 import 'package:islami_app/presentation/tabs/sebha_tab/cubit/sebha_contract.dart';
@@ -29,7 +29,7 @@ class _SebhaTabScreenState extends State<SebhaTabScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  AppAssets.islamiLogo,
+                  AppImages.islamiLogo,
                   color: AppColors.gold500,
                   width: context.widthSize*0.6,
                 ),
@@ -41,7 +41,7 @@ class _SebhaTabScreenState extends State<SebhaTabScreen> {
               ),
               (context.heightSize * 0.03).verticalSpace,
               Image.asset(
-                AppAssets.sebhaPart1,
+                AppImages.sebhaPart1,
                 width: context.widthSize*0.3,
               ),
               InkWell(
@@ -55,7 +55,7 @@ class _SebhaTabScreenState extends State<SebhaTabScreen> {
                         turns: state.turns,
                         duration: Duration(milliseconds: 450),
                       child: Image.asset(
-                        AppAssets.sebhaBody,
+                        AppImages.sebhaBody,
                         width: context.widthSize*0.8,
                       ),
                     ),
