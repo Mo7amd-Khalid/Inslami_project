@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/tabs/quran_tab/quran_details_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:islami_app/core/constant/keywords.dart';
+import 'package:islami_app/core/di/di.dart';
+import 'package:islami_app/core/theme/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'core/routes/app_route.dart';
+import 'core/routes/routes.dart';
 
-import 'home/home_screen.dart';
 
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
+  SharedPreferences preferences = getIt();
+  bool? onboarding = preferences.getBool(AppKeywords.onboardingKeyword);
+  dotenv.load(fileName: ".env");
+  runApp(MyApp(onboarding: onboarding,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+  const MyApp({this.onboarding, super.key});
+  final bool? onboarding;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      routes: {
-        HomeScreen.routeName : (_) => HomeScreen(),
-        QuranDetailsScreen.routeName : (_) => QuranDetailsScreen(),
-      },
-      initialRoute: HomeScreen.routeName,
+      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: onboarding == true ? Routes.homeViews : Routes.onboardingViews,
     );
   }
 }
+
 
