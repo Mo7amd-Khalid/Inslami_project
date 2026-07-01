@@ -102,4 +102,8 @@ Islami is an all-in-one Islamic application designed to support Muslims in their
  The first version of this app was unstable and build without clean architecture. But now I migrate the structure of this app to clean architecture to be able to add or update feature easily
 
 ## Links
-- https://drive.google.com/file/d/1LM5LoV5DP2NiHmGUqpUZwqlBVaLsHQjM/view?usp=drive_link
+- APK Link
+  - https://drive.google.com/file/d/1LM5LoV5DP2NiHmGUqpUZwqlBVaLsHQjM/view?usp=drive_link
+
+- Demo Video
+  - https://drive.google.com/file/d/1_H8wFthEvgS_uTrAa_rMxqMEItipkfDR/view?usp=drive_link
