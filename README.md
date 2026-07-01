@@ -1,16 +1,105 @@
-# islami_app
+# Islami App
 
-A new Flutter project.
+Islami is an all-in-one Islamic application designed to support Muslims in their daily worship. It allows users to read the Holy Quran and Hadith, keep track of prayer times and the next upcoming prayer, use a digital Sebha for praising Allah, and read a collection of daily Azkar, including post-prayer supplications. The app also provides access to multiple Quran reciters and Islamic radio channels, making it easy to listen to the Quran and beneficial Islamic content anytime, anywhere.
+# 📱 Features
 
-## Getting Started
+- Display quran and hadith.
+- Use sebha to praise God.
+- Listen to radio channels & reciters.
+- Display prayer times & the next prayer.
+- Control your bookmarks (add or delete).
+- Responsive UI for different screens.
 
-This project is a starting point for a Flutter application.
+# 🧠 Architecture & Patterns
 
-A few resources to get you started if this is your first Flutter project:
+- Clean Architecture
+- MVI pattern
+- Repository pattern
+- Dependency Injection
+- Singleton pattern
+- RESTful APIs
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# 🧰 Tech Stack
+
+- Dart & Flutter
+- State Management (Cubit)
+- Networking (Dio , Retrofit)
+- Local Storage (Shared Preferences)
+- Design : (Material Design)
+
+# 📸 Screenshots
+
+## Quran Tab
+
+<p align="center">
+  <img src="readme images/surahs.jpg" width="250" height="500" />
+  <img src="readme images/surah search.jpg" width="250" height="500" />
+  <img src="readme images/surah content.jpg" width="250" height="500" />
+</p>
+
+## Hadeth Tab
+
+<p align="center">
+  <img src="readme images/hadith display.jpg" width="250" height="500" />
+  <img src="readme images/hadith content.jpg" width="250" height="500" />
+</p>
+
+## Sebha Tab
+
+<p align="center">
+  <img src="readme images/sebha.jpg" width="250" height="500" />
+</p>
+
+## Radio & Reciter Tab
+
+<p align="center">
+  <img src="readme images/radio channels.jpg" width="250" height="500" />
+  <img src="readme images/reciters.jpg" width="250" height="500" />
+  <img src="readme images/surahs of reciter.jpg" width="250" height="500" />
+</p>
+
+## Prayer times & Azkar Tab
+
+<p align="center">
+  <img src="readme images/time and azkar.jpg" width="250" height="500" />
+  <img src="readme images/azkar content.jpg" width="250" height="500" />
+</p>
+
+## Bookmarks Tab
+
+<p align="center">
+  <img src="readme images/ayah selection 1.jpg" width="250" height="500" />
+  <img src="readme images/ayah selection 2.jpg" width="250" height="500" />
+  <img src="readme images/bookmarks.jpg" width="250" height="500" />
+  <img src="readme images/bookmark selection.jpg" width="250" height="500" />
+</p>
+
+
+
+## 📦 Packages Used
+
+- cupertino_icons
+- flutter_native_splash
+- shared_preferences
+- carousel_slider
+- smooth_page_indicator
+- animated_rotation
+- dio
+- pretty_dio_logger
+- retrofit
+- audioplayers
+- flutter_bloc
+- injectable
+- get_it
+- connectivity_plus
+- flutter_dotenv
+- geolocator
+- intl
+- rename_app
+
+## Note
+ The first version of this app was unstable and build without clean architecture. But now I migrate the structure of this app to clean architecture to be able to add or update feature easily
+
+## Links
+- https://drive.google.com/file/d/1LM5LoV5DP2NiHmGUqpUZwqlBVaLsHQjM/view?usp=drive_link
